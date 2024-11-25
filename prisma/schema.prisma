@@ -1,0 +1,131 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum PermissionType {
+  READ
+  WRITE
+  UPDATE
+  DELETE
+}
+
+
+model User {
+  id           Int      @id @default(autoincrement()) // Primary key
+  name         String                                // User's name
+  email        String   @unique                      // Unique email
+  password     String                                // User's password (hashed)
+  roleId       Int                                   // Foreign key for Role
+  role         Role     @relation(fields: [roleId], references: [id]) // Relation to Role
+  logs       Activity_log[] 
+  dateAdded    DateTime @default(now())              // Date the user was added
+  lastLogin    DateTime?                             // Optional field for last login timestamp
+  isActive     Boolean  @default(true)               // Whether the user is active
+  profileImage String?                               // Optional field for profile picture URL
+  updatedAt    DateTime @updatedAt                   // Automatically updates on record update
+  isDeleted    Boolean  @default(false)  
+}
+
+model Role {
+  id         Int       @id @default(autoincrement()) // Primary key
+  RoleName   String    @unique                      // Role name (e.g., INTERN, ENGINEER, ADMIN)
+  users      User[]                                 // Relation to User model
+  dateAdded  DateTime  @default(now())
+  isDeleted  Boolean   @default(false)
+  Permissions Role_Permission[]                     // Relation to Role_Permission
+}
+
+model Permission {
+  id         Int       @id @default(autoincrement())
+  PermissionName       String    @unique
+  roles      Role_Permission[]                     // Relation to Role_Permission
+}
+
+model Role_Permission {
+  id           Int        @id @default(autoincrement())
+  Role         Role       @relation(fields: [roleId], references: [id])
+  roleId       Int
+  Permission   Permission @relation(fields: [permissionId], references: [id])
+  permissionId Int
+  type         PermissionType
+}
+
+model Activity {
+  id         Int        @id @default(autoincrement())
+  name       String
+  logs       Activity_log[]                       // Relation to Activity_log
+}
+
+model Activity_log {
+  id         Int       @id @default(autoincrement())
+  activity   Activity  @relation(fields: [activityId], references: [id])
+  activityId Int
+  user       User      @relation(fields: [userId], references: [id])
+  userId     Int
+  action     String
+  dateAdded  DateTime  @default(now())
+}
+
+model Configuration {
+  id         Int       @id @default(autoincrement())
+  dateAdded  DateTime  @default(now())
+  updatedAt    DateTime @updatedAt 
+  label   String    @unique 
+  value   String
+}
+
+
+model Job {
+  id              Int           @id @default(autoincrement())
+  title           String
+  location        String
+  type            String
+  description     String
+  dateAdded       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+  isDeleted       Boolean       @default(false)
+  isActive        Boolean       @default(true)
+  responsibilities String[]
+  requirements    String[]
+  applications    JobApply[]
+}
+
+model JobApply {
+  id             Int      @id @default(autoincrement())
+  name           String   // Applicant's full name
+  email          String   // Applicant's email address
+  phone          String   // Applicant's phone number
+  coverLetter    String   // Cover letter filename (saved on the server)
+  resume         String   // Resume filename (saved on the server)
+  appliedAt      DateTime @default(now()) // Timestamp of when the application was made
+
+  // Relationship with Job model (foreign key)
+  jobId          Int
+  job            Job       @relation(fields: [jobId], references: [id])
+}
+
+model Banner {
+  id              Int         @id @default(autoincrement())
+  banner          String
+  type            String
+  title           String
+  description     String
+  isButtonVisible Boolean      @default(true)
+  buttonText      String?
+  buttonLink      String?
+  isDeleted       Boolean      @default(false)
+  isActive        Boolean      @default(true)
+  createdAt       DateTime     @default(now())
+  updatedAt       DateTime     @updatedAt
+}

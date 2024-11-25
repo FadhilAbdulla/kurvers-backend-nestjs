@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+  <%- include('partials/head.ejs') %>
+  <body>
+    <%- include('partials/header.ejs', { header: "about" }) %>
+    <section class="main-banner-about" data-aos="fade-in" data-aos-delay="200">
+      <div class="text-overlay row align-items-center p-4">
+        <div class="col-md-1 d-none d-md-block"></div>
+        <div class="col-md-7 text-start" data-aos="fade-right" data-aos-delay="200">
+          <h1 class="heading">A legacy of <span class="text-secondary">excellence</span></h1>
+          <h2 class="heading">for a modern world</h2>
+          <p class="sub-heading">
+            We go the extra mile for every customer, delivering first-class turnkey solutions on a global scale, achieving sustainability through
+            efficiency and excellence.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="about-us">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6" data-aos="fade-right" data-aos-delay="200">
+            <h3 class="text-primary fw-bold mb-3 underline-alt fs-1 ls-1">
+              About us
+              <!-- <span
+                class="underline position-absolute start-0 text-black-50"
+              ></span> -->
+            </h3>
+            <p class="pt-4">
+              Founded in Düsseldorf in 1966, Kürvers is an international operating group of companies and a proven specialist for pipeline projects in
+              the petrochemical and energy industries.
+            </p>
+            <p>
+              With over 55 years of experience, we excel in procuring materials globally for complex projects, ensuring unmatched delivery through
+              trusted supplier relationships. Our commitment to reliability, integrity, and collaboration drives us to exceed expectations and meet
+              every client's unique project requirements.
+            </p>
+          </div>
+          <div class="col-md-1 d-none d-md-block"></div>
+          <div class="col-md-5 pt-4" data-aos="fade-left" data-aos-delay="200">
+            <img src="<%= link %>/uploads/assets/NewSet/About2.png" alt="About Us Image" class="img-fluid rounded" />
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="bg-light">
+      <div class="container">
+        <div class="row justify-content-center g-4">
+          <div class="col-md-12 text-center">
+            <h3 class="text-primary fw-bold mb-3 underline-alt fs-1" data-aos="fade-down" data-aos-delay="200">Why Us</h3>
+          </div>
+
+          <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+            <div class="about-us-content-box">
+              <div class="logo-circle">
+                <img src="<%= link %>/uploads/assets/NewSet/Icons/EXCELLENCE.png" alt="Logo" />
+                <!-- Replace with your logo -->
+              </div>
+              <h4 class="text-center font-style-secondary fw-bold">Excellence</h4>
+              <p>
+                Kürvers staff have an impressive 1000+ years of accumulated industry experience and relationships with the leading manufacturers,
+                stockists and service providers worldwide.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+            <div class="about-us-content-box">
+              <div class="logo-circle">
+                <img src="<%= link %>/uploads/assets/NewSet/Icons/QUALITY.png" alt="Logo" />
+                <!-- Replace with your logo -->
+              </div>
+              <h3 class="text-center font-style-secondary fw-bold">Quality</h3>
+              <p>
+                Is at the forefront in everything we do. It's our absolute priority, providing you with the highest quality in products and services.
+                Kürvers has been ISO 9001:2015 certified since 1990.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+            <div class="about-us-content-box">
+              <div class="logo-circle">
+                <img src="<%= link %>/uploads/assets/NewSet/Icons/EXPERIANCE.png" alt="Logo" />
+                <!-- Replace with your logo -->
+              </div>
+              <h3 class="text-center font-style-secondary fw-bold">Experience</h3>
+              <p>
+                With 3000+ completed projects since its foundation in 1966, Kürvers has a thorough understanding of the critical requirements for
+                successful piping & steel supplies.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+            <div class="about-us-content-box">
+              <div class="logo-circle">
+                <img src="<%= link %>/uploads/assets/NewSet/Icons/INTEGRITY.png" alt="Logo" />
+                <!-- Replace with your logo -->
+              </div>
+              <h3 class="text-center font-style-secondary fw-bold">Integrity</h3>
+              <p>Dedicated teams ensure seamless project management so that our clients can focus on their tasks.</p>
+            </div>
+          </div>
+          <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+            <div class="about-us-content-box">
+              <div class="logo-circle">
+                <img src="<%= link %>/uploads/assets/NewSet/Icons/COLLABORATION.png" alt="Logo" />
+                <!-- Replace with your logo -->
+              </div>
+              <h3 class="text-center font-style-secondary fw-bold">Collaboration</h3>
+              <p>
+                Kürvers operates globally with a far-reaching supply network. We are always close to our clients, providing unrivalled, personal
+                service wherever they are.
+              </p>
+            </div>
+          </div>
+
+          <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+            <div class="about-us-content-box">
+              <div class="logo-circle">
+                <img src="<%= link %>/uploads/assets/NewSet/Icons/CUSTOMER-FOCUS.png" alt="Logo" />
+                <!-- Replace with your logo -->
+              </div>
+              <h3 class="text-center font-style-secondary fw-bold">Customer Focus</h3>
+              <p>
+                We are dedicated to our customers. We listen and understand their needs, forging life-long partnerships and ensuring exceptional
+                delivery through flexible, tailor-made solutions.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <%- include('partials/footer') %>
+
+    <div id="preloader"></div>
+
+    <!-- Vendor JS Files -->
+    <script src="<%= link %>/uploads/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="<%= link %>/uploads/assets/vendor/aos/aos.js"></script>
+    <script src="<%= link %>/uploads/assets/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="<%= link %>/uploads/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="<%= link %>/uploads/assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="<%= link %>/uploads/assets/vendor/purecounter/purecounter_vanilla.js"></script>
+    <script src="<%= link %>/uploads/assets/vendor/php-email-form/validate.js"></script>
+
+    <!-- Template Main JS File -->
+    <script src="<%= link %>/uploads/assets/js/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,24 @@
+<header id="header" class="header d-flex align-items-center">
+  <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+    <a href="<%= link %>" class="logo d-flex align-items-center">
+      <img src="<%= link %>/uploads/assets/img/<%= header == 'valves' ? 'logo-valve.png' : 'logo.png' %>" alt="" />
+    </a>
+
+    <i class="mobile-nav-toggle mobile-nav-show bi bi-list text-primary"></i>
+    <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x text-secondary"></i>
+    <nav id="navbar" class="navbar">
+      <ul>
+        <li><a href="<%= link %>" class="<%= header == 'home' ? 'active' : '' %>">Home</a></li>
+        <li><a href="<%= link %>/about" class="<%= header == 'about' ? 'active' : '' %>">About Us</a></li>
+        <li><a href="<%= link %>/turnkey" class="<%= header == 'turnkey' ? 'active' : '' %>">Turnkey solutions</a></li>
+        <li><a href="<%= link %>/product" class="<%= header == 'product' ? 'active' : '' %>">product range</a></li>
+        <li><a href="<%= link %>/valves" class="<%= header == 'valves' ? 'active' : '' %>">kürvers valves</a></li>
+        <li><a href="<%= link %>/career" class="<%= header == 'career' ? 'active' : '' %>">careers</a></li>
+
+        <li class="contact">
+          <a href="<%= link %>/contact" class="<%= header.route == 'contact' ? 'active' : '' %>" style="color: white; font-weight: 500">Contact us</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
