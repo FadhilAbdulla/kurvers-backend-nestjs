@@ -93,26 +93,26 @@
                     </div>
                   </div>
                   <div class="col-md-6 form-group">
-                    <label for="cvUpload">Upload Cover Letter</label>
+                    <label for="coverLetter">Upload Cover Letter</label>
                     <div class="input-group">
                       <input
                         type="file"
                         class="form-control"
-                        id="cvUpload"
-                        name="cvUpload"
+                        id="coverLetter"
+                        name="coverLetter"
                         accept=".pdf, .doc, .docx, .txt"
                         required
                       />
                     </div>
                   </div>
                   <div class="col-md-6 form-group mb-3">
-                    <label for="cvUpload">Upload Resume</label>
+                    <label for="resume">Upload Resume</label>
                     <div class="input-group">
                       <input
                         type="file"
                         class="form-control"
-                        id="cvUpload"
-                        name="cvUpload"
+                        id="resume"
+                        name="resume"
                         accept=".pdf, .doc, .docx, .txt"
                         required
                       />
@@ -156,47 +156,25 @@
         .addEventListener("submit", function (event) {
           event.preventDefault(); // Prevent default form submission
 
-          // Collect the form data
-          const name = document.getElementById("name").value;
-          const email = document.getElementById("email").value;
-          const countryCode = document.getElementById("countryCode").value;
-          const phone = document.getElementById("phone").value;
-          const coverLetter = document.getElementById("cvUpload").files[0]; // assuming it's a file input
-          const resume = document.getElementById("cvUpload").files[1]; // assuming it's a file input
-
           const formData = new FormData();
-          formData.append("name", name);
-          formData.append("email", email);
-          formData.append("phone", phone);
-          formData.append("resume", "resume");
-          // formData.append("countryCode", countryCode);
-          formData.append("coverLetter", "coverLetter");
-
-          for (let pair of formData.entries()) {
-            console.log(`${pair[0]}: ${pair[1]}`);
-          }
-
-          // const payload = {
-          //   name: name,
-          //   email: email,
-          //   phone: phone,
-          //   resume: "resume",
-          //   coverLetter: "coverLetter",
-          // };
+          formData.append("name", document.getElementById("name").value);
+          formData.append("email", document.getElementById("email").value);
+          // formData.append("countryCode", document.getElementById("countryCode").value);
+          formData.append("phone", document.getElementById("phone").value);
+          formData.append("resume", document.getElementById("resume").files[0]);
+          // formData.append("coverLetter", document.getElementById("coverLetter").files[0]);
+          formData.append("coverLetter", "coverletter");
+          formData.append("job", "<%= jobId %>");
 
           // API Call
-          fetch("<%= link %>/api/careerapply", {
+          fetch("/api/careerapply", {
             method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            // body: JSON.stringify(payload),
             body:formData
           })
             .then((response) => response.json())
             .then((data) => {
-              console.log(data);
               alert("Application submitted successfully!");
+              window.location.href = "<%= link %>/career"
             })
             .catch((error) => {
               alert("There was an error submitting your application.");

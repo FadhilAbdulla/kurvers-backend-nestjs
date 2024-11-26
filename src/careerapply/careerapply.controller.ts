@@ -1,17 +1,46 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+  UseInterceptors,
+  UploadedFile,
+  ForbiddenException,
+  BadRequestException,
+} from '@nestjs/common';
 import { CareerapplyService } from './careerapply.service';
 import { Prisma } from '@prisma/client';
+import { FileFieldsInterceptor, FileInterceptor } from '@nestjs/platform-express';
+import { FileUploadService } from 'src/fileupload/fileupload.service';
 // import { CreateCareerapplyDto } from './dto/create-careerapply.dto';
 // import { UpdateCareerapplyDto } from './dto/update-careerapply.dto';
 
 @Controller('careerapply')
 export class CareerapplyController {
-  constructor(private readonly careerapplyService: CareerapplyService) {}
+  constructor(
+    private readonly careerapplyService: CareerapplyService,
+    private readonly fileUploadService: FileUploadService
+  ) {}
 
   @Post()
-  create(@Body() createCareerapplyDto: Prisma.JobApplyCreateInput) {
-    console.log(createCareerapplyDto, 'here');
+  @UseInterceptors(FileInterceptor('resume', new FileUploadService().getMulterOptions()))
+  async create(@UploadedFile() file: Express.Multer.File, @Body() createCareerapplyDto: Prisma.JobApplyCreateInput) {
+    if (file) {
+      const res = await this.fileUploadService.uploadToLocal(file);
+      createCareerapplyDto.resume = res;
+      createCareerapplyDto.coverLetter = res;
+    } else {
+      return new BadRequestException('Please upload a resume');
+    }
 
+    createCareerapplyDto.job = {
+      connect: { id: +createCareerapplyDto.job },
+    };
+
+    console.log(createCareerapplyDto);
     return this.careerapplyService.create(createCareerapplyDto);
   }
 

@@ -7,7 +7,6 @@ export class CareerapplyService {
   constructor(private readonly databaseService: DatabaseService) {}
 
   create(createCareerapplyDto: Prisma.JobApplyCreateInput) {
-    console.log(createCareerapplyDto);
     return this.databaseService.jobApply.create({ data: createCareerapplyDto });
   }
 
@@ -21,6 +20,9 @@ export class CareerapplyService {
             type: true, // Include job type (optional)
           },
         },
+      },
+      orderBy: {
+        appliedAt: 'desc', // Order by the 'appliedAt' field in descending order (latest first)
       },
     });
   }

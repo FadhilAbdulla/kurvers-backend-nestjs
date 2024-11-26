@@ -6,7 +6,7 @@ import { Root, FooterItems } from './entities/constant';
 
 @Injectable()
 export class PagesService {
-  constructor(private readonly databaseService: DatabaseService) { }
+  constructor(private readonly databaseService: DatabaseService) {}
 
   ConvertData(Items, Data) {
     return Data.reduce((acc, item) => {
@@ -78,6 +78,7 @@ export class PagesService {
     const career = await this.databaseService.job.findMany({
       where: {
         isDeleted: false,
+        isActive: true,
       },
     });
 

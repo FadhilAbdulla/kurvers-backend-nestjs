@@ -11,6 +11,11 @@ export class CareerController {
     return this.careerService.create(createCareerDto);
   }
 
+  @Post('status/:id')
+  changeStatus(@Param('id', ParseIntPipe) id: number) {
+    return this.careerService.changeStatus(id);
+  }
+
   @Get()
   findAll() {
     return this.careerService.findAll();

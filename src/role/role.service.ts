@@ -11,7 +11,7 @@ export class RoleService {
   }
 
   async findAll() {
-    return this.databaseService.role.findMany();
+    return this.databaseService.role.findMany({ where: { isDeleted: false } });
   }
 
   findOne(id: number) {
@@ -23,6 +23,13 @@ export class RoleService {
   }
 
   remove(id: number) {
-    return `This action removes a #${id} role`;
+    return this.databaseService.role.update({
+      where: {
+        id: id,
+      },
+      data: {
+        isDeleted: true,
+      },
+    });
   }
 }

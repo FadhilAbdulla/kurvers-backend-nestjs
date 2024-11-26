@@ -1,4 +1,4 @@
-export const Root = { link: 'https://projects.puremagicit.com/kurvers' };
+export const Root = { link: process.env.SITE_URL };
 export const FooterItems = [
   'central_fax_no',
   'central_tel_no',
