@@ -13,9 +13,13 @@ import { BannerModule } from './banner/banner.module';
 import { FileUploadService } from './fileupload/fileupload.service';
 import { FileUploadModule } from './fileupload/fileupload.module';
 import { PagesModule } from './pages/pages.module';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
   imports: [
+    ConfigModule.forRoot({
+      envFilePath: '.env',
+    }),
     AuthModule,
     UserModule,
     DatabaseModule,
