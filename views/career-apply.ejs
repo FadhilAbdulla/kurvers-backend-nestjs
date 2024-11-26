@@ -171,28 +171,27 @@
           formData.append("resume", "resume");
           // formData.append("countryCode", countryCode);
           formData.append("coverLetter", "coverLetter");
-          formData.append("jobId", 1);
 
           for (let pair of formData.entries()) {
             console.log(`${pair[0]}: ${pair[1]}`);
           }
 
-          const payload = {
-            name: name,
-            email: email,
-            phone: phone,
-            resume: "resume",
-            coverLetter: "coverLetter",
-            jobId: 1,
-          };
+          // const payload = {
+          //   name: name,
+          //   email: email,
+          //   phone: phone,
+          //   resume: "resume",
+          //   coverLetter: "coverLetter",
+          // };
 
           // API Call
-          fetch("http://localhost:4000/careerapply", {
+          fetch("<%= link %>/api/careerapply", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
             },
-            body: JSON.stringify(payload),
+            // body: JSON.stringify(payload),
+            body:formData
           })
             .then((response) => response.json())
             .then((data) => {

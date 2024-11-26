@@ -1,4 +1,4 @@
-export const Root = { link: 'http://localhost:4000' };
+export const Root = { link: 'https://projects.puremagicit.com/kurvers' };
 export const FooterItems = [
   'central_fax_no',
   'central_tel_no',

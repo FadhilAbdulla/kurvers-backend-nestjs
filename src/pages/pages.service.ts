@@ -6,7 +6,7 @@ import { Root, FooterItems } from './entities/constant';
 
 @Injectable()
 export class PagesService {
-  constructor(private readonly databaseService: DatabaseService) {}
+  constructor(private readonly databaseService: DatabaseService) { }
 
   ConvertData(Items, Data) {
     return Data.reduce((acc, item) => {
@@ -102,13 +102,14 @@ export class PagesService {
     };
   }
 
-  async career_apply(id) {
+  async career_apply(id: number) {
     const res = await this.databaseService.configuration.findMany();
     // const career = await this.databaseService.job.findFirst({ where: { id: id } });
     console.log(id);
 
     return {
       ...Root,
+      jobId: id,
       footer: { ...this.ConvertData(FooterItems, res) },
     };
   }
