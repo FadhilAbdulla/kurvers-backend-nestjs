@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+  
     <%- include('partials/head.ejs') %>
     <body>
       <%- include('partials/header.ejs', { header: "career" }) %>
@@ -48,6 +49,7 @@
             <div class="card-body pt-4">
               <form id="jobApplicationForm">
                 <div class="row g-4 mb-4">
+
                   <div class="col-md-6 form-group">
                     <label for="name">Full Name</label>
                     <input
@@ -150,6 +152,7 @@
     <!-- Template Main JS File -->
     <script src="<%= link %>/uploads/assets/js/main.js"></script>
 
+
     <script>
       document
         .getElementById("jobApplicationForm")
@@ -167,7 +170,7 @@
           formData.append("job", "<%= jobId %>");
 
           // API Call
-          fetch("/api/careerapply", {
+          fetch("<%= link %>/api/careerapply", {
             method: "POST",
             body:formData
           })
