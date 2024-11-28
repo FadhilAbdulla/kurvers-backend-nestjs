@@ -56,7 +56,7 @@ model Role_Permission {
   id           Int        @id @default(autoincrement())
   Role         Role       @relation(fields: [roleId], references: [id])
   roleId       Int
-  Permission   Permission @relation(fields: [permissionId], references: [id])
+  Permission   Permission @relation(fields: [permissionId], references: [id],onDelete: Cascade)
   permissionId Int
   type         PermissionType
 }
