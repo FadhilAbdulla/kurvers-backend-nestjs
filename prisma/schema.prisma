@@ -61,16 +61,10 @@ model Role_Permission {
   type         PermissionType
 }
 
-model Activity {
-  id         Int        @id @default(autoincrement())
-  name       String
-  logs       Activity_log[]                       // Relation to Activity_log
-}
 
 model Activity_log {
   id         Int       @id @default(autoincrement())
-  activity   Activity  @relation(fields: [activityId], references: [id])
-  activityId Int
+  activity   String   
   user       User      @relation(fields: [userId], references: [id])
   userId     Int
   action     String

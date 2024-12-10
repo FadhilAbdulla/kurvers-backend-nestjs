@@ -164,9 +164,11 @@
           formData.append("email", document.getElementById("email").value);
           // formData.append("countryCode", document.getElementById("countryCode").value);
           formData.append("phone", document.getElementById("phone").value);
-          formData.append("resume", document.getElementById("resume").files[0]);
+          // formData.append("resume", document.getElementById("resume").files[0]);
           // formData.append("coverLetter", document.getElementById("coverLetter").files[0]);
-          formData.append("coverLetter", "coverletter");
+          // formData.append("coverLetter", "coverletter");
+          formData.append("files", document.getElementById("resume").files[0]);
+          formData.append("files", document.getElementById("coverLetter").files[0]);
           formData.append("job", "<%= jobId %>");
 
           // API Call

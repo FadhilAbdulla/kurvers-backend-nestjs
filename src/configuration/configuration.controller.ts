@@ -15,10 +15,18 @@ export class ConfigurationController {
   findAll() {
     return this.configurationService.findAll();
   }
+  @Get('activity-logs')
+  findLogs() {
+    return this.configurationService.findLogs();
+  }
+  @Get('contact-us')
+  findContactUs() {
+    return this.configurationService.findContactUS();
+  }
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.configurationService.findOne(+id);
+    return this.configurationService.findOne(id);
   }
 
   @Patch(':id')

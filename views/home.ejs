@@ -14,9 +14,13 @@
                 <div class="gradient-overlay" data-aos="fade-in" data-aos-delay="200"></div>
                 <div class="overlay-text" >
                   <div data-aos="fade-down" data-aos-delay="200">
-                  <h1 ><%- slide.title %> </h1>
-                  <p><%= slide.description %></p>
-                  <a href="<%= link + slide.buttonLink %>" class="btn btn-custom" data-aos="fade-in" data-aos-delay="400"><%= slide.buttonText %></a>
+                  <%- slide.title %>
+                  <%- slide.description %>
+                  <% if (link + slide.buttonLink && slide.buttonText) { %>
+                    <a href="<%= link + slide.buttonLink %>" class="btn btn-custom" data-aos="fade-in" data-aos-delay="400">
+                      <%= slide.buttonText %>
+                    </a>
+                  <% } %>
                 </div>
                 </div>
               </div>

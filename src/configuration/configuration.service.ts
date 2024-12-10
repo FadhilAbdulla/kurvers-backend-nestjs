@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { Prisma } from '@prisma/client';
 import { DatabaseService } from 'src/database/database.service';
+import { ConfigurationEdit, ContactEdit } from 'src/pages/entities/constant';
 
 @Injectable()
 export class ConfigurationService {
@@ -11,11 +12,36 @@ export class ConfigurationService {
   }
 
   findAll() {
-    return this.databaseService.configuration.findMany();
+    return this.databaseService.configuration.findMany({
+      where: {
+        label: {
+          in: ConfigurationEdit,
+        },
+      },
+    });
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} configuration`;
+  findLogs() {
+    return this.databaseService.activity_log.findMany({
+      include: { user: true },
+      orderBy: {
+        dateAdded: 'desc',
+      },
+    });
+  }
+
+  findContactUS() {
+    return this.databaseService.configuration.findMany({
+      where: {
+        label: {
+          in: ContactEdit,
+        },
+      },
+    });
+  }
+
+  findOne(id: string) {
+    return this.databaseService.configuration.findFirst({ where: { label: id } });
   }
 
   update(id: number, updateConfigurationDto: Prisma.ConfigurationUpdateInput) {

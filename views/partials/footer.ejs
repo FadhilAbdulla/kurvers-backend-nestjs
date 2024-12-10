@@ -37,9 +37,13 @@
       </div>
       <div class="col-md-3">
         <ul class="list-unstyled text-sm-85">
-          <li class="fw-light"><span class="fw-bold">Central Tel. No.:</span> <%- footer.central_tel_no %></li>
-          <li class="fw-light"><span class="fw-bold">Central Fax No.:</span> <%- footer.central_fax_no %></li>
-          <li class="fw-light"><span class="fw-bold">Mail:</span> <%- footer.mail %></li>
+          <li class="fw-light">
+            <span class="fw-bold">Central Tel. No.:</span><a href="tel:+<%= footer.central_tel_no %>"> <%= footer.central_tel_no %></a>
+          </li>
+          <li class="fw-light">
+            <span class="fw-bold">Central Fax No.:</span> <a href="fax:+<%= footer.central_fax_no %>"><%= footer.central_fax_no %></a>
+          </li>
+          <li class="fw-light"><span class="fw-bold">Mail:</span><a href="mailto:<%= footer.mail %>"> <%= footer.mail %></a></li>
         </ul>
         <address class="fw-semibold text-sm-85">
           <%= footer.footer_companyname %><br />

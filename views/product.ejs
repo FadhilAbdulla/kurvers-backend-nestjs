@@ -26,11 +26,9 @@
           data-aos="fade-right"
           data-aos-delay="200"
         >
-          <h1 class="heading">Product Range</h1>
+          <h1 class="heading"><%= heading %></h1>
           <p class="sub-heading">
-            Kürvers can supply both standard materials from stock or, where
-            required, we can arrange for materials to be manufactured strictly
-            in accordance with your project's individual needs.
+            <%= description %>
           </p>
         </div>
       </div>
@@ -50,171 +48,80 @@
             <img
               src="<%= link %>/uploads/assets/NewSet/Home9-3.png"
               alt="About Us Image"
-              class="img-fluid rounded"
+              class="img-fluid rounded mb-4"
               data-aos="fade-right"
               data-aos-delay="200"
             />
           </div>
           <div class="col-md-8 px-4" data-aos="fade-left" data-aos-delay="200">
-            <h3 class="text-primary fw-bold mb-1 underline-alt ls-1">Pipes</h3>
-            <ul class="custom-list mt-3 font-style-secondary">
-              <li>
-                <img src="<%= link %>/uploads/assets/NewSet/circle.png" width="25px" class="me-4" />
-                Seamless and welded carbon steel linepipe to API, EN and ISO
-                specifications
-              </li>
-              <li>
-                <img src="<%= link %>/uploads/assets/NewSet/circle.png" width="25px" class="me-4" />
-                Seamless and welded carbon, alloy, stainless and duplex steel
-                pipes for high and low temperature service to ASTM, ASME, API,
-                EN, ISO and AWWA specifications
-              </li>
-              <li>
-                <img
-                  src="<%= link %>/uploads/assets/NewSet/circle.png"
-                  width="25px"
-                  class="me-4"
-                />Casing and tubing
-              </li>
-              <li>
-                <img
-                  src="<%= link %>/uploads/assets/NewSet/circle.png"
-                  width="25px"
-                  class="me-4"
-                />CRA clad pipes
-              </li>
-              <li>
-                <img
-                  src="<%= link %>/uploads/assets/NewSet/circle.png"
-                  width="25px"
-                  class="me-4"
-                />Boiler, heat-exchanger and precision tubes
-              </li>
-              <li>
-                <img src="<%= link %>/uploads/assets/NewSet/circle.png" width="25px" class="me-4" />
-                Welded steel pipes with larger diameters (16"-144") and
-                exceptionally heavy wall thicknesses
-              </li>
-              <li>
-                <img src="<%= link %>/uploads/assets/NewSet/circle.png" width="25px" class="me-4" />
-                Welded structural tubulars for offshore applications
-              </li>
-              <li>
-                <img src="<%= link %>/uploads/assets/NewSet/circle.png" width="25px" class="me-4" />
-                Pipes made from Monel, Hastelloy, Incoloy and Titanium Alloys,
-                Cuni
-              </li>
-            </ul>
-            <h3 class="text-primary fw-bold mb-1 mt-2 underline-alt ls-1">
-              Plates, Beams and Profiles
-            </h3>
-            <ul class="custom-list mt-3 fs-6">
-              <li>
-                <img
-                  src="<%= link %>/uploads/assets/NewSet/circle.png"
-                  width="25px"
-                  class="me-4"
-                />Carbon, alloy and stainless steel plates
-              </li>
-              <li>
-                <img
-                  src="<%= link %>/uploads/assets/NewSet/circle.png"
-                  width="25px"
-                  class="me-4"
-                />Structural sections
-              </li>
-            </ul>
+            <% 
+const selectedEntries = Object.entries(products).slice(0, 2);
+%>
+            <% selectedEntries.forEach(([heading, items]) => { %>
+              <% if (Array.isArray(items)) { %>
+                <!-- If items is a list -->
+                <div>
+                  <h3 class="text-primary fw-bold mb-1 mt-2 underline-alt ls-1">
+                    <%= heading %>
+                  </h3>
+                  <ul class="custom-list mt-3 fs-6">
+                    <% items.forEach((item) => { %>
+                      <li>
+                        <img
+                          src="<%= link %>/uploads/assets/NewSet/circle.png"
+                          width="25px"
+                          class="me-4"
+                        />
+                        <%= item %>
+                      </li>
+                    <% }); %>
+                  </ul>
+                </div>
+              <% } else { %>
+                <!-- If items is not a list -->
+                <a href="<%= link %>/valves" class="pb-4">
+                  <h3 class="text-primary fw-bold mb-1 mt-2 underline-alt ls-1">
+                    <%= heading %> <i class="ml-2 fa fa-arrow-right-long"></i>
+                  </h3>
+                </a>
+              <% } %>
+            <% }); %>
+
           </div>
-        </div>
-        <div class="row mt-4 pt-4 ">
-          <div
-            class="col-md-8 px-4 pt-4 mb-4"
-            data-aos="fade-right"
-            data-aos-delay="200"
-          >
-            <h3 class="text-primary fw-bold mb-1 underline-alt ls-1">
-              Fittings, Flanges, Gaskets, Bolts, Nuts, Weld Consumables
-            </h3>
-            <ul class="custom-list mt-3 fs-6">
-              <li>
-                <img src="<%= link %>/uploads/assets/NewSet/circle.png" width="25px" class="me-4" />
-                Seamless and welded BW and forged fittings in carbon, alloy,
-                stainless and duplex steels to ASTM, ASME and EN specifications
-              </li>
-              <li>
-                <img src="<%= link %>/uploads/assets/NewSet/circle.png" width="25px" class="me-4" />
-                Flanges in carbon alloy, stainless and duplex steels to ASTM,
-                ASME and EN specifications
-              </li>
-              <li>
-                <img src="<%= link %>/uploads/assets/NewSet/circle.png" width="25px" class="me-4" />
-                Fittings, flanges and piping items to client drawings with
-                supporting calculations
-              </li>
-              <li>
-                <img
-                  src="<%= link %>/uploads/assets/NewSet/circle.png"
-                  width="25px"
-                  class="me-4"
-                />Metallic and non-metallic gaskets
-              </li>
-              <li>
-                <img src="<%= link %>/uploads/assets/NewSet/circle.png" width="25px" class="me-4" />
-                Stud bolts, machine bolts, nuts and washers in metric or
-                imperial sizes
-              </li>
-              <li>
-                <img src="<%= link %>/uploads/assets/NewSet/circle.png" width="25px" class="me-4" />
-                Welding consumables including rods and fluxes
-              </li>
-              <li>
-                <img
-                  src="<%= link %>/uploads/assets/NewSet/circle.png"
-                  width="25px"
-                  class="me-4"
-                />Insulation materials and repair kits
-              </li>
-            </ul>
-            <a href="<%= link %>/valves" class="pb-4">
-            <h3 class="text-primary fw-bold mb-1 mt-2 underline-alt ls-1 ">
-              Valves, Strainers, Traps <i class="ml-2 fa fa-arrow-right-long"></i>
-            </h3>
-            	</a>
-            <!-- <ul class="custom-list mt-3 fs-6">
-              <li>
-                <img src="<%= link %>/uploads/assets/NewSet/circle.png" width="25px" class="me-4" />
-                Forged and cast steel valves in carbon, alloy, stainless and
-                duplex steels
-              </li>
-              <li>
-                <img src="<%= link %>/uploads/assets/NewSet/circle.png" width="25px" class="me-4" />
-                Gate, globe, check, plug, butterfly, wafer check and swing check
-                valves
-              </li>
-              <li>
-                <img src="<%= link %>/uploads/assets/NewSet/circle.png" width="25px" class="me-4" />
-                Ball valves, trunnion mounted and floating ball, two and three
-                piece, and top entry
-              </li>
-              <li>
-                <img src="<%= link %>/uploads/assets/NewSet/circle.png" width="25px" class="me-4" />
-                Mechanical. electrical, pneumatic and hydraulic valve actuators
-              </li>
-              <li>
-                <img
-                  src="<%= link %>/uploads/assets/NewSet/circle.png"
-                  width="25px"
-                  class="me-4"
-                />Strainers and filters
-              </li>
-              <li>
-                <img
-                  src="<%= link %>/uploads/assets/NewSet/circle.png"
-                  width="25px"
-                  class="me-4"
-                />Steam traps
-              </li>
-            </ul> -->
+          <div class="col-md-8 px-4" data-aos="fade-left" data-aos-delay="200">
+            <% 
+const selectedEntries2 = Object.entries(products).slice(2, 4);
+%>
+            <% selectedEntries2.forEach(([heading, items]) => { %>
+              <% if (Array.isArray(items)) { %>
+                <!-- If items is a list -->
+                <div>
+                  <h3 class="text-primary fw-bold mb-1 mt-2 underline-alt ls-1">
+                    <%= heading %>
+                  </h3>
+                  <ul class="custom-list mt-3 fs-6">
+                    <% items.forEach((item) => { %>
+                      <li>
+                        <img
+                          src="<%= link %>/uploads/assets/NewSet/circle.png"
+                          width="25px"
+                          class="me-4"
+                        />
+                        <%= item %>
+                      </li>
+                    <% }); %>
+                  </ul>
+                </div>
+              <% } else { %>
+                <!-- If items is not a list -->
+                <a href="<%= link %>/valves" class="pb-4">
+                  <h3 class="text-primary fw-bold mb-1 mt-2 underline-alt ls-1">
+                    <%= heading %> <i class="ml-2 fa fa-arrow-right-long"></i>
+                  </h3>
+                </a>
+              <% } %>
+            <% }); %>
+
           </div>
           <div class="col-md-4 px-4">
             <img

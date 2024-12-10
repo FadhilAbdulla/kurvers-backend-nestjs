@@ -3,7 +3,7 @@ import { LoginDTO } from './dto/auth.dto';
 import { DatabaseService } from 'src/database/database.service';
 import { v4 as uuid } from 'uuid';
 
-const access_control = ['job_application', 'banner', 'career', 'configuration', 'admin'];
+const access_control = ['job_application', 'banner', 'career', 'configuration', 'admin', 'product_range', 'kurvers_valves', 'contact_us'];
 
 const FetchPermissionList = (permissionsList) => {
   return permissionsList.reduce((acc, { type, Permission: { PermissionName } }) => {
@@ -77,6 +77,7 @@ export class AuthService {
     });
 
     // console.log(Permissions);
+    await this.databaseSevice.activity_log.create({ data: { activity: 'authentication', action: 'login', userId: user.roleId } });
 
     return {
       message: 'Login successful',
