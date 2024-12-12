@@ -7,11 +7,11 @@ export class CareerService {
   constructor(private readonly databaseService: DatabaseService) {}
 
   async create(createCareerDto: Prisma.JobCreateInput) {
-    await this.databaseService.activity_log.create({ data: { activity: 'career', action: 'created', userId: 1 } });
+    await this.databaseService.logActivity('Career', 'created');
     return this.databaseService.job.create({ data: createCareerDto });
   }
   async changeStatus(id: number) {
-    await this.databaseService.activity_log.create({ data: { activity: 'career', action: 'status changed', userId: 1 } });
+    await this.databaseService.logActivity('Career', 'status changed');
 
     const currentState = await this.databaseService.job.findUnique({
       where: { id },
@@ -44,7 +44,7 @@ export class CareerService {
   }
 
   async update(id: number, updateCareerDto: Prisma.JobUpdateInput) {
-    await this.databaseService.activity_log.create({ data: { activity: 'career', action: 'updated', userId: 1 } });
+    await this.databaseService.logActivity('Career', 'updated');
     return this.databaseService.job.update({
       where: {
         id: id,
@@ -56,7 +56,7 @@ export class CareerService {
   }
 
   async remove(id: number) {
-    await this.databaseService.activity_log.create({ data: { activity: 'career', action: 'removed', userId: 1 } });
+    await this.databaseService.logActivity('Career', 'removed');
     return this.databaseService.job.update({
       where: {
         id: id,

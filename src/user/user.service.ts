@@ -9,7 +9,7 @@ export class UserService {
   constructor(private readonly databaseService: DatabaseService) {}
 
   async create(user: CreateUserDto) {
-    await this.databaseService.activity_log.create({ data: { activity: 'User', action: 'created', userId: 1 } });
+    await this.databaseService.logActivity('User', 'created');
     if (user.password !== user.confirmPassword) {
       throw new ForbiddenException('Passwords do not match');
     }
@@ -39,7 +39,7 @@ export class UserService {
   }
 
   async update(id: number, updateUserDto: Prisma.UserUpdateInput) {
-    await this.databaseService.activity_log.create({ data: { activity: 'User', action: 'updated', userId: 1 } });
+    await this.databaseService.logActivity('User', 'updated');
     return this.databaseService.user.update({
       where: {
         id: id,
@@ -51,7 +51,8 @@ export class UserService {
   }
 
   async remove(id: number) {
-    await this.databaseService.activity_log.create({ data: { activity: 'User', action: 'removed', userId: 1 } });
+    await this.databaseService.logActivity('User', 'removed');
+
     return this.databaseService.user.update({
       where: {
         id: id,

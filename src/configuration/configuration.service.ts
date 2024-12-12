@@ -8,7 +8,7 @@ export class ConfigurationService {
   constructor(private readonly databaseService: DatabaseService) {}
 
   async create(createConfigurationDto: Prisma.ConfigurationCreateInput) {
-    await this.databaseService.activity_log.create({ data: { activity: 'General Data', action: 'created', userId: 1 } });
+    await this.databaseService.logActivity('General Data', 'created');
     return this.databaseService.configuration.create({ data: createConfigurationDto });
   }
 
@@ -46,7 +46,7 @@ export class ConfigurationService {
   }
 
   async update(id: number, updateConfigurationDto: Prisma.ConfigurationUpdateInput) {
-    await this.databaseService.activity_log.create({ data: { activity: 'General Data', action: 'updated', userId: 1 } });
+    await this.databaseService.logActivity('General Data', 'updated');
 
     return this.databaseService.configuration.update({
       where: {
@@ -59,7 +59,7 @@ export class ConfigurationService {
   }
 
   async remove(id: number) {
-    await this.databaseService.activity_log.create({ data: { activity: 'General Data', action: 'removed', userId: 1 } });
+    await this.databaseService.logActivity('General Data', 'removed');
 
     return this.databaseService.configuration.delete({ where: { id: id } });
   }

@@ -6,8 +6,8 @@ import { DatabaseService } from 'src/database/database.service';
 export class RoleService {
   constructor(private readonly databaseService: DatabaseService) {}
 
-  create(createRoleDto: Prisma.RoleCreateInput) {
-    this.databaseService.activity_log.create({ data: { activity: 'Role', action: 'created', userId: 1 } });
+  async create(createRoleDto: Prisma.RoleCreateInput) {
+    await this.databaseService.logActivity('Role', 'created');
 
     return this.databaseService.role.create({ data: createRoleDto });
   }
@@ -24,8 +24,8 @@ export class RoleService {
     return `This action updates a #${id} role`;
   }
 
-  remove(id: number) {
-    this.databaseService.activity_log.create({ data: { activity: 'Role', action: 'removed', userId: 1 } });
+  async remove(id: number) {
+    await this.databaseService.logActivity('Role', 'removed');
     return this.databaseService.role.update({
       where: {
         id: id,

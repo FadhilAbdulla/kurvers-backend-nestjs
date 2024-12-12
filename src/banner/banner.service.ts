@@ -9,7 +9,7 @@ export class BannerService {
   constructor(private readonly databaseService: DatabaseService) {}
 
   async create(createBannerDto: Prisma.BannerCreateInput) {
-    await this.databaseService.activity_log.create({ data: { activity: 'banner', action: 'created', userId: 1 } });
+    await this.databaseService.logActivity('Banner', 'created');
     return this.databaseService.banner.create({ data: createBannerDto });
   }
 
@@ -26,7 +26,7 @@ export class BannerService {
   }
 
   async update(id: number, updateBannerDto: Prisma.BannerUpdateInput) {
-    await this.databaseService.activity_log.create({ data: { activity: 'banner', action: 'updated', userId: 1 } });
+    await this.databaseService.logActivity('Banner', 'updated');
     return this.databaseService.banner.update({
       where: {
         id: id,
@@ -38,7 +38,7 @@ export class BannerService {
   }
 
   async remove(id: number) {
-    await this.databaseService.activity_log.create({ data: { activity: 'banner', action: 'removed', userId: 1 } });
+    await this.databaseService.logActivity('Banner', 'removed');
     return this.databaseService.banner.update({
       where: {
         id: id,
