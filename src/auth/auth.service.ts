@@ -77,7 +77,7 @@ export class AuthService {
     });
 
     // console.log(Permissions);
-    await this.databaseSevice.activity_log.create({ data: { activity: 'authentication', action: 'login', userId: user.roleId } });
+    await this.databaseSevice.activity_log.create({ data: { activity: 'authentication', action: 'login', userId: user.id } });
 
     return {
       message: 'Login successful',
