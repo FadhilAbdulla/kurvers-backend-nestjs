@@ -7,6 +7,8 @@ export class RoleService {
   constructor(private readonly databaseService: DatabaseService) {}
 
   create(createRoleDto: Prisma.RoleCreateInput) {
+    this.databaseService.activity_log.create({ data: { activity: 'Role', action: 'created', userId: 1 } });
+
     return this.databaseService.role.create({ data: createRoleDto });
   }
 
@@ -23,6 +25,7 @@ export class RoleService {
   }
 
   remove(id: number) {
+    this.databaseService.activity_log.create({ data: { activity: 'Role', action: 'removed', userId: 1 } });
     return this.databaseService.role.update({
       where: {
         id: id,

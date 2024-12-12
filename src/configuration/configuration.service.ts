@@ -7,7 +7,8 @@ import { ConfigurationEdit, ContactEdit } from 'src/pages/entities/constant';
 export class ConfigurationService {
   constructor(private readonly databaseService: DatabaseService) {}
 
-  create(createConfigurationDto: Prisma.ConfigurationCreateInput) {
+  async create(createConfigurationDto: Prisma.ConfigurationCreateInput) {
+    await this.databaseService.activity_log.create({ data: { activity: 'General Data', action: 'created', userId: 1 } });
     return this.databaseService.configuration.create({ data: createConfigurationDto });
   }
 
@@ -44,7 +45,9 @@ export class ConfigurationService {
     return this.databaseService.configuration.findFirst({ where: { label: id } });
   }
 
-  update(id: number, updateConfigurationDto: Prisma.ConfigurationUpdateInput) {
+  async update(id: number, updateConfigurationDto: Prisma.ConfigurationUpdateInput) {
+    await this.databaseService.activity_log.create({ data: { activity: 'General Data', action: 'updated', userId: 1 } });
+
     return this.databaseService.configuration.update({
       where: {
         id: id,
@@ -55,7 +58,9 @@ export class ConfigurationService {
     });
   }
 
-  remove(id: number) {
+  async remove(id: number) {
+    await this.databaseService.activity_log.create({ data: { activity: 'General Data', action: 'removed', userId: 1 } });
+
     return this.databaseService.configuration.delete({ where: { id: id } });
   }
 }

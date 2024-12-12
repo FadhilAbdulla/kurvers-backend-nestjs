@@ -56,7 +56,7 @@ export class PermissionService {
   }
 
   async update(id: number, updatePermissionDto: UpdatePermissionDto) {
-    console.log(id, updatePermissionDto);
+    this.databaseService.activity_log.create({ data: { activity: 'Permission', action: 'updated', userId: 1 } });
 
     updatePermissionDto.permission.map(async (item) => {
       const permData = await this.databaseService.permission.findFirst({ where: { PermissionName: item.PermissionName } });
@@ -99,6 +99,8 @@ export class PermissionService {
   }
 
   remove(id: string) {
+    this.databaseService.activity_log.create({ data: { activity: 'Permission', action: 'removed', userId: 1 } });
+
     return this.databaseService.permission.delete({ where: { PermissionName: id } });
   }
 }
