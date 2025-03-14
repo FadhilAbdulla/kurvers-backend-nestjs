@@ -29,7 +29,8 @@ export const ConfigurationEdit = [
 
 export const ContactEdit = [
   'contact_usa',
-  'contact_ger',
+  'contact_ger1',
+  'contact_ger2',
   'contact_ner',
   'contact_italy',
   'contact_uk',
