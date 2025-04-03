@@ -3,7 +3,7 @@ import { LoginDTO } from './dto/auth.dto';
 import { DatabaseService } from 'src/database/database.service';
 import { v4 as uuid } from 'uuid';
 
-const access_control = ['job_application', 'banner', 'career', 'configuration', 'admin', 'product_range', 'kurvers_valves', 'contact_us'];
+const access_control = ['job_application', 'career', 'admin', 'product_range', 'kurvers_valves', 'contact_us', "home", "about", "turnkey", "footer"];
 
 const FetchPermissionList = (permissionsList) => {
   return permissionsList.reduce((acc, { type, Permission: { PermissionName } }) => {
@@ -29,7 +29,7 @@ const Admin = { email: 'admin@pmits.com', password: 'root' };
 
 @Injectable()
 export class AuthService {
-  constructor(private readonly databaseSevice: DatabaseService) {}
+  constructor(private readonly databaseSevice: DatabaseService) { }
 
   async login(UserLoginDTO: LoginDTO) {
     const user = await this.databaseSevice.user.findUnique({

@@ -3,32 +3,34 @@ import { PagesService } from './pages.service';
 
 @Controller('')
 export class PagesController {
-  constructor(private readonly pagesService: PagesService) {}
+  constructor(private readonly pagesService: PagesService) { }
 
   @Get()
   @Render('home')
   home() {
-    return this.pagesService.home();
+    return this.pagesService.GetPrimaryData('home')
+    // return this.pagesService.home();
   }
   @Get('about')
   @Render('about')
   about() {
-    return this.pagesService.about();
+    return this.pagesService.GetPrimaryData('about')
+    // return this.pagesService.about();
   }
   @Get('turnkey')
   @Render('turnkey')
   turnkey() {
-    return this.pagesService.turnkey();
+    return this.pagesService.GetPrimaryData('turkey')
   }
   @Get('product')
   @Render('product')
   product() {
-    return this.pagesService.product();
+    return this.pagesService.GetPrimaryData('productRange')
   }
   @Get('valves')
   @Render('valves')
   valves() {
-    return this.pagesService.valves();
+    return this.pagesService.GetPrimaryData('valves')
   }
   @Get('career')
   @Render('career')

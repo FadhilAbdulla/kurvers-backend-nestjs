@@ -2,9 +2,10 @@
 <html lang="en">
 
 <%- include('partials/head.ejs') %>
-    <body>
-      <%- include('partials/header.ejs', { header: "product" }) %>
-    <!-- <section class="hero-section">
+
+  <body>
+    <%- include('partials/header.ejs', { header: "product" }) %>
+      <!-- <section class="hero-section">
       <div class="overlay">
         <div class="text-container">
           <h1>Your partner for <br /><span>SUCCESS</span></h1>
@@ -14,156 +15,113 @@
       </div>
     </section> -->
 
-    <section
-      class="main-banner-product-range"
-      data-aos="fade-in"
-      data-aos-delay="200"
-    >
-      <div class="text-overlay row align-items-center p-4">
-        <div class="col-md-1 d-none d-md-block"></div>
-        <div
-          class="col-md-7 text-start"
-          data-aos="fade-right"
-          data-aos-delay="200"
-        >
-          <h1 class="heading"><%= heading %></h1>
-          <p class="sub-heading">
-            <%= description %>
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section class="about-us">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-4 px-4 mb-4">
-            <img
-              src="<%= link %>/uploads/assets/NewSet/Home9-2.png"
-              alt="About Us Image"
-              class="img-fluid rounded mb-4"
-              data-aos="fade-right"
-              data-aos-delay="200"
-            />
-            <img
-              src="<%= link %>/uploads/assets/NewSet/Home9-3.png"
-              alt="About Us Image"
-              class="img-fluid rounded mb-4"
-              data-aos="fade-right"
-              data-aos-delay="200"
-            />
-          </div>
-          <div class="col-md-8 px-4" data-aos="fade-left" data-aos-delay="200">
-            <% 
-const selectedEntries = Object.entries(products).slice(0, 2);
-%>
-            <% selectedEntries.forEach(([heading, items]) => { %>
-              <% if (Array.isArray(items)) { %>
-                <!-- If items is a list -->
-                <div>
-                  <h3 class="text-primary fw-bold mb-1 mt-2 underline-alt ls-1">
-                    <%= heading %>
-                  </h3>
-                  <ul class="custom-list mt-3 fs-6">
-                    <% items.forEach((item) => { %>
-                      <li>
-                        <img
-                          src="<%= link %>/uploads/assets/NewSet/circle.png"
-                          width="25px"
-                          class="me-4"
-                        />
-                        <%= item %>
-                      </li>
-                    <% }); %>
-                  </ul>
-                </div>
-              <% } else { %>
-                <!-- If items is not a list -->
-                <a href="<%= link %>/valves" class="pb-4">
-                  <h3 class="text-primary fw-bold mb-1 mt-2 underline-alt ls-1">
-                    <%= heading %> <i class="ml-2 fa fa-arrow-right-long"></i>
-                  </h3>
-                </a>
-              <% } %>
-            <% }); %>
-
-          </div>
-          <div class="col-md-8 px-4" data-aos="fade-left" data-aos-delay="200">
-            <% 
-const selectedEntries2 = Object.entries(products).slice(2, 4);
-%>
-            <% selectedEntries2.forEach(([heading, items]) => { %>
-              <% if (Array.isArray(items)) { %>
-                <!-- If items is a list -->
-                <div>
-                  <h3 class="text-primary fw-bold mb-1 mt-2 underline-alt ls-1">
-                    <%= heading %>
-                  </h3>
-                  <ul class="custom-list mt-3 fs-6">
-                    <% items.forEach((item) => { %>
-                      <li>
-                        <img
-                          src="<%= link %>/uploads/assets/NewSet/circle.png"
-                          width="25px"
-                          class="me-4"
-                        />
-                        <%= item %>
-                      </li>
-                    <% }); %>
-                  </ul>
-                </div>
-              <% } else { %>
-                <!-- If items is not a list -->
-                <a href="<%= link %>/valves" class="pb-4">
-                  <h3 class="text-primary fw-bold mb-1 mt-2 underline-alt ls-1">
-                    <%= heading %> <i class="ml-2 fa fa-arrow-right-long"></i>
-                  </h3>
-                </a>
-              <% } %>
-            <% }); %>
-
-          </div>
-          <div class="col-md-4 px-4">
-            <img
-              src="<%= link %>/uploads/assets/NewSet/Home9-4.png"
-              alt="About Us Image"
-              class="img-fluid rounded mb-4"
-              data-aos="fade-left"
-              data-aos-delay="200"
-            />
-            <img
-              src="<%= link %>/uploads/assets/NewSet/Home9-1.png"
-              alt="About Us Image"
-              class="img-fluid rounded mb-4"
-              data-aos="fade-left"
-              data-aos-delay="200"
-            />
-            <!-- <img
-              src="<%= link %>/uploads/assets/NewSet/Home9-5.png"
-              alt="About Us Image"
-              class="img-fluid rounded"
-              data-aos="fade-left"
-              data-aos-delay="200"
-            /> -->
+      <section class="main-banner-product-range" data-aos="fade-in" data-aos-delay="200">
+        <div class="text-overlay row align-items-center p-4">
+          <div class="col-md-1 d-none d-md-block"></div>
+          <div class="col-md-7 text-start" data-aos="fade-right" data-aos-delay="200">
+            <h1 class="heading"><%- banner.heading %></h1>
+            <p class="sub-heading">
+              <%- banner.subHeading %>
+            </p>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <%- include('partials/footer') %>
+      <section class="about-us">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-4 px-4 mb-4">
+              <% const imgSet=imageSet.slice(0,2); %>
+                <% imgSet.forEach((items)=> { %>
+                  <img src="<%= link %>/<%= items.image %>" alt="About Us Image" class="img-fluid rounded mb-4"
+                    data-aos="fade-right" data-aos-delay="200" />
+                  <% }); %>
+            </div>
+            <div class="col-md-8 px-4" data-aos="fade-left" data-aos-delay="200">
+              <% const selectedEntries=products.slice(0, 2); %>
+                <% selectedEntries.forEach((items)=> { %>
+                  <% if (Array.isArray(items.points)) { %>
+                    <!-- If items is a list -->
+                    <div>
+                      <h3 class="text-primary fw-bold mb-1 mt-2 underline-alt ls-1">
+                        <%= items.heading %>
+                      </h3>
+                      <ul class="custom-list mt-3 fs-6">
+                        <% items.points.forEach((item)=> { %>
+                          <li>
+                            <img src="<%= link %>/uploads/assets/NewSet/circle.png" width="25px" class="me-4" />
+                            <%= item %>
+                          </li>
+                          <% }); %>
+                      </ul>
+                    </div>
+                    <% } else { %>
+                      <!-- If items is not a list -->
+                      <a href="<%= items.link %>" class="pb-4">
+                        <h3 class="text-primary fw-bold mb-1 mt-2 underline-alt ls-1">
+                          <%= items.heading %> <i class="ml-2 fa fa-arrow-right-long"></i>
+                        </h3>
+                      </a>
+                      <% } %>
+                        <% }); %>
 
-    <div id="preloader"></div>
+            </div>
+            <div class="col-md-8 px-4" data-aos="fade-left" data-aos-delay="200">
+              <% const selectedEntries2=products.slice(2, 4); %>
+                <% selectedEntries2.forEach((items)=> { %>
+                  <% if (Array.isArray(items.points)) { %>
+                    <!-- If items is a list -->
+                    <div>
+                      <h3 class="text-primary fw-bold mb-1 mt-2 underline-alt ls-1">
+                        <%= items.heading %>
+                      </h3>
+                      <ul class="custom-list mt-3 fs-6">
+                        <% items.points.forEach((item)=> { %>
+                          <li>
+                            <img src="<%= link %>/uploads/assets/NewSet/circle.png" width="25px" class="me-4" />
+                            <%= item %>
+                          </li>
+                          <% }); %>
+                      </ul>
+                    </div>
+                    <% } else { %>
+                      <!-- If items is not a list -->
+                      <a href="<%= items.link %>" class="pb-4">
+                        <h3 class="text-primary fw-bold mb-1 mt-2 underline-alt ls-1">
+                          <%= items.heading %> <i class="ml-2 fa fa-arrow-right-long"></i>
+                        </h3>
+                      </a>
+                      <% } %>
+                        <% }); %>
 
-    <!-- Vendor JS Files -->
-    <script src="<%= link %>/uploads/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="<%= link %>/uploads/assets/vendor/aos/aos.js"></script>
-    <script src="<%= link %>/uploads/assets/vendor/glightbox/js/glightbox.min.js"></script>
-    <script src="<%= link %>/uploads/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-    <script src="<%= link %>/uploads/assets/vendor/swiper/swiper-bundle.min.js"></script>
-    <script src="<%= link %>/uploads/assets/vendor/purecounter/purecounter_vanilla.js"></script>
-    <script src="<%= link %>/uploads/assets/vendor/php-email-form/validate.js"></script>
+            </div>
+            <div class="col-md-4 px-4">
 
-    <!-- Template Main JS File -->
-    <script src="<%= link %>/uploads/assets/js/main.js"></script>
+              <% const imgSet2=imageSet.slice(2,4); %>
+                <% imgSet2.forEach((items)=> { %>
+                  <img src="<%= link %>/<%= items.image %>" alt="About Us Image" class="img-fluid rounded mb-4"
+                    data-aos="fade-right" data-aos-delay="200" />
+                  <% }); %>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <%- include('partials/footer') %>
+
+        <div id="preloader"></div>
+
+        <!-- Vendor JS Files -->
+        <script src="<%= link %>/uploads/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="<%= link %>/uploads/assets/vendor/aos/aos.js"></script>
+        <script src="<%= link %>/uploads/assets/vendor/glightbox/js/glightbox.min.js"></script>
+        <script src="<%= link %>/uploads/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+        <script src="<%= link %>/uploads/assets/vendor/swiper/swiper-bundle.min.js"></script>
+        <script src="<%= link %>/uploads/assets/vendor/purecounter/purecounter_vanilla.js"></script>
+        <script src="<%= link %>/uploads/assets/vendor/php-email-form/validate.js"></script>
+
+        <!-- Template Main JS File -->
+        <script src="<%= link %>/uploads/assets/js/main.js"></script>
   </body>
+
 </html>

@@ -1,10 +1,12 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, ParseIntPipe } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, ParseIntPipe, UseInterceptors, UploadedFile, HttpException } from '@nestjs/common';
 import { ConfigurationService } from './configuration.service';
 import { Prisma } from '@prisma/client';
+import { FileUploadService } from 'src/fileupload/fileupload.service';
+import { FileInterceptor } from '@nestjs/platform-express';
 
 @Controller('configuration')
 export class ConfigurationController {
-  constructor(private readonly configurationService: ConfigurationService) {}
+  constructor(private readonly configurationService: ConfigurationService, private readonly fileUploadService: FileUploadService) { }
 
   @Post()
   create(@Body() createConfigurationDto: Prisma.ConfigurationCreateInput) {
@@ -29,8 +31,20 @@ export class ConfigurationController {
     return this.configurationService.findOne(id);
   }
 
+  @Post('imageUpload')
+  @UseInterceptors(FileInterceptor('file', new FileUploadService().getMulterOptions()))
+  async imageUpload(@UploadedFile() file: Express.Multer.File, @Body() createBannerDto: Prisma.BannerCreateInput) {
+    if (file) {
+      const res = await this.fileUploadService.uploadToLocal(file);
+      return { imageKey: res };
+    } else {
+      console.log('something went wrong');
+      throw new HttpException('Invalid file', 400);
+    }
+  }
+
   @Patch(':id')
-  update(@Param('id', ParseIntPipe) id: number, @Body() updateConfigurationDto: Prisma.ConfigurationUpdateInput) {
+  update(@Param('id') id: string, @Body() updateConfigurationDto: Prisma.ConfigurationUpdateInput) {
     return this.configurationService.update(id, updateConfigurationDto);
   }
 

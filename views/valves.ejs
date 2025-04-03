@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-    <%- include('partials/head.ejs') %>
-    <body>
-      <%- include('partials/header.ejs', { header: "valves" }) %>
-    <!-- <section class="hero-section">
+<%- include('partials/head.ejs') %>
+
+  <body>
+    <%- include('partials/header.ejs', { header: "valves" }) %>
+      <!-- <section class="hero-section">
       <div class="overlay">
         <div class="text-container">
           <h1>Your partner for <br /><span>SUCCESS</span></h1>
@@ -13,7 +14,7 @@
       </div>
     </section> -->
 
-    <!-- <section
+      <!-- <section
       class="main-banner-product-range"
       data-aos="fade-in"
       data-aos-delay="200"
@@ -35,91 +36,37 @@
       </div>
     </section> -->
 
-    <div class="position-relative h-100">
-      <div class="slides-1 portfolio-details-slider swiper">
-        <div class="swiper-wrapper align-items-center">
-          <!-- Slide 0 -->
-          <div class="swiper-slide" data-aos="fade-in" data-aos-delay="200">
-            <div class="slide-content">
-              <img
-                src="<%= link %>/uploads/assets/NewSet/valves/4.png"
-                alt=""
-                style="width: 100%; height: 100vh; object-fit: cover"
-              />
-              <div class="gradient-overlay"></div>
-              <div class="overlay-text">
-                <h1>YOUR PARTNER FOR <span class="highlight">SUCCESS</span></h1>
-                <p>Kürvers Valves</p>
-                <!-- <a href="product-range.html" class="btn btn-custom"
+      <div class="position-relative h-100">
+        <div class="slides-1 portfolio-details-slider swiper">
+          <div class="swiper-wrapper align-items-center">
+            <!-- Slide 0 -->
+            <% banner.forEach(slide=> { %>
+              <div class="swiper-slide" data-aos="fade-in" data-aos-delay="200">
+                <div class="slide-content">
+                  <img src="<%= link %>/<%= slide.image %>" alt=""
+                    style="width: 100%; height: 100vh; object-fit: cover" />
+                  <div class="gradient-overlay"></div>
+                  <div class="overlay-text">
+                    <!-- <h1>YOUR PARTNER FOR <span class="highlight">SUCCESS</span></h1>
+                <p>Kürvers Valves</p> -->
+                    <!-- <a href="product-range.html" class="btn btn-custom"
                   >Find Out More</a
                 > -->
-              </div>
-            </div>
-          </div>
-          <!-- Slide 1 -->
-          <div class="swiper-slide" data-aos="fade-in" data-aos-delay="200">
-            <div class="slide-content">
-              <img
-                src="<%= link %>/uploads/assets/NewSet/valves/1.png"
-                alt=""
-                style="width: 100%; height: 100vh; object-fit: cover"
-              />
-              <div class="gradient-overlay"></div>
-              <div class="overlay-text">
-                <h1>YOUR PARTNER FOR <span class="highlight">SUCCESS</span></h1>
-                <p>Kürvers Valves</p>
-                <!-- <a href="product-range.html" class="btn btn-custom"
-                  >Find Out More</a
-                > -->
-              </div>
-            </div>
-          </div>
+                    <%- slide.heading %>
+                      <%- slide.subHeading %>
 
-          <!-- Slide 2 -->
-          <div class="swiper-slide">
-            <div class="slide-content">
-              <img
-                src="<%= link %>/uploads/assets/NewSet/valves/3.png"
-                alt=""
-                style="width: 100%; height: 100vh"
-              />
-              <div class="gradient-overlay"></div>
-              <div class="overlay-text">
-                <h1>YOUR PARTNER FOR <span class="highlight">SUCCESS</span></h1>
-                <p>Kürvers Valves</p>
-                <!-- <a href="product-range.html" class="btn btn-custom"
-                  >Find Out More</a
-                > -->
+                  </div>
+                </div>
               </div>
-            </div>
+              <% }); %>
           </div>
-
-          <!-- Slide 3 -->
-          <div class="swiper-slide">
-            <div class="slide-content">
-              <img
-                src="<%= link %>/uploads/assets/NewSet/valves/2.png"
-                alt=""
-                style="width: 100%; height: 100vh"
-              />
-              <div class="gradient-overlay"></div>
-              <div class="overlay-text">
-                <h1>YOUR PARTNER FOR <span class="highlight">SUCCESS</span></h1>
-                <p>Kürvers Valves</p>
-                <!-- <a href="product-range.html" class="btn btn-custom"
-                  >Find Out More</a
-                > -->
-              </div>
-            </div>
-          </div>
+          <div class="swiper-pagination"></div>
         </div>
-        <div class="swiper-pagination"></div>
-      </div>
-      <!-- <div class="swiper-button-prev"></div>
+        <!-- <div class="swiper-button-prev"></div>
       <div class="swiper-button-next"></div> -->
-    </div>
+      </div>
 
-    <!-- <section style="padding-bottom: 0">
+      <!-- <section style="padding-bottom: 0">
       <div class="scrollable-row" id="scrollableRow">
         <div class="col-9 col-md-5 rounded">
           <img src="<%= link %>/uploads/assets/NewSet/valves/4.png" />
@@ -136,192 +83,141 @@
       </div>
     </section> -->
 
-    <section style="padding: 0">
-      <div class="row">
-        <div
-          class="col-md-8 bg-primary px-4 p-4 text-white"
-          data-aos="fade-in"
-          data-aos-delay="200"
-        >
-          <div class="m-4" data-aos="fade-right" data-aos-delay="200">
-            <h3 style="font-size: 4rem">Valves</h3>
-            <p class="mt-4">
-              Founded in 2018 as a subsidiary of the Kürvers Group, Kürvers
-              Valves was established to address specific customer needs and
-              requirements.
-            </p>
-            <!-- <p>
-              With a legacy spanning nearly 60 years and a team of over 100
-              employees worldwide, the Kürvers Group is a respected global
-              leader in its industry, particularly in piping and related
-              products. Our extensive references and strong reputation reflect
-              our commitment to excellence. We maintain a global presence, with
-              local offices and sales representatives serving customers across
-              more than 15 countries
-            </p>
-            <p>
-              Kürvers Valves specializes in the trade of industrial valves, as
-              well as providing comprehensive planning, processing, and project
-              management services for international EPC contractors, power
-              plants, oil and gas infrastructure, and the chemical industry
-            </p> -->
-            <p>
-              Kürvers Valves specializes in the supply of high quality industrial valves, as well as providing comprehensive planning, processing, and project management services for international EPC contractors, power plants, oil and gas plants, pipelines and (petro) chemical plants.
-            </p>
-          </div>
-        </div>
-        <div
-          class="col-md-4 bg-blue-light text-center d-flex align-items-center"
-          data-aos="fade-in"
-          data-aos-delay="200"
-        >
-          <div data-aos="fade-left" data-aos-delay="200">
-            <p style="font-size: 3.7rem" class="fw-bolder font-style-primary">
-              “Reliability and high quality is our focus.”
-            </p>
-            <p class="text-capitalize">
-              BORIS VINCELJ, <br />
-              MANAGING DIRECTOR
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="about-us" style="padding-top: 40px">
-      <div class="container">
-        <div class="row g-4">
-          <div class="col-md-5 pt-4" data-aos="fade-right" data-aos-delay="200">
-            <img
-              src="<%= link %>/uploads/assets/NewSet/valves/Side.jpg"
-              alt="About Us Image"
-              class="img-fluid rounded"
-            />
-          </div>
-          <div
-            class="col-md-7 d-flex align-items-center"
-            data-aos="fade-left"
-            data-aos-delay="200"
-          >
-            <div>
-              <h3 class="text-primary fw-bold mb-3 underline-alt fs-1 ls-1">
-                Kürvers Valve Products
-                <!-- <span
-                class="underline position-absolute start-0 text-black-50"
-              ></span> -->
+      <section style="padding: 0">
+        <div class="row">
+          <div class="col-md-8 bg-primary px-4 p-4 text-white" data-aos="fade-in" data-aos-delay="200">
+            <div class="m-4" data-aos="fade-right" data-aos-delay="200">
+              <h3 style="font-size: 4rem">
+                <%= section1.headingLeft %>
               </h3>
-              <p class="pt-4">
-                At Kürvers Valves, we provide products precisely tailored to
-                customer specifications and optimized for their applications.
-                Our extensive portfolio includes a wide range of designs,
-                materials, sizes, compatible accessories, and specialized
-                solutions, along with fastening materials, pipe sections, and
-                seals. This diverse selection and high product availability make
-                us the ideal partner, whether for single-valve needs or
-                large-scale projects. We deliver exceptional quality with a
-                strong price-performance balance, ensuring seamless integration
-                of all products from our manufacturers.
+              <p class="mt-4">
+                <%- section1.subHeadingLeft %>
               </p>
-              <p>
-                Our dedicated quality management team ensures all work meets the
-                highest standards, prioritizing both quality and safety.
-                Customers benefit from cost-effective solutions that are
-                engineered for reliable, long-term performance, minimized
-                maintenance requirements, and high profitability.
+            </div>
+          </div>
+          <div class="col-md-4 bg-blue-light text-center d-flex align-items-center" data-aos="fade-in"
+            data-aos-delay="200">
+            <div data-aos="fade-left" data-aos-delay="200">
+              <p style="font-size: 3.7rem" class="fw-bolder font-style-primary">
+                <%= section1.headingRight %>
+              </p>
+              <p class="text-capitalize">
+                <%= section1.subHeadingRight %>
               </p>
             </div>
           </div>
         </div>
-      </div>
-    </section>
-    <section class="container" style="padding-top: 0">
-      <div class="row g-4">
-        <% Object.entries(products).forEach(([heading, items]) => { %>
-          <div class="col-md-3" data-aos="fade-right" data-aos-delay="200">
-            <p>
-              <span class="fw-bold"><%= heading %></span> <br />
-              <span>Versions:</span>
-            </p>
-            <ul class="custom-list">
-              <% items.forEach((item) => { %>
-                <li class="align-items-center">
-                  <img
-                    src="<%= link %>/uploads/assets/NewSet/circle-valve.png"
-                    width="25px"
-                    class="me-4"
-                  />
-                  <%= item %>
-                </li>
-              <% }); %>
-            </ul>
+      </section>
+
+      <section class="about-us" style="padding-top: 40px">
+        <div class="container">
+          <div class="row g-4">
+            <div class="col-md-5 pt-4" data-aos="fade-right" data-aos-delay="200">
+              <img src="<%= link %>/<%= section2.image %>" alt="About Us Image" class="img-fluid rounded" />
+            </div>
+            <div class="col-md-7 d-flex align-items-center" data-aos="fade-left" data-aos-delay="200">
+              <div>
+                <h3 class="text-primary fw-bold mb-3 underline-alt fs-1 ls-1">
+                  <%- section2.heading %>
+                    <!-- <span
+                class="underline position-absolute start-0 text-black-50"
+              ></span> -->
+                </h3>
+                <p class="pt-4">
+                  <%- section2.subHeading %>
+                </p>
+              </div>
+            </div>
           </div>
-        <% }); %>
-        
-      </div>
-    </section>
+        </div>
+      </section>
+      <section class="container" style="padding-top: 0">
+        <div class="row g-4">
+          <% valves.forEach((items)=> { %>
+            <div class="col-md-3" data-aos="fade-right" data-aos-delay="200">
+              <p>
+                <span class="fw-bold">
+                  <%= items.heading %>
+                </span> <br />
+                <span>Versions:</span>
+              </p>
+              <ul class="custom-list">
+                <% items.points.forEach((item)=> { %>
+                  <li class="align-items-center">
+                    <img src="<%= link %>/uploads/assets/NewSet/circle-valve.png" width="25px" class="me-4" />
+                    <%= item %>
+                  </li>
+                  <% }); %>
+              </ul>
+            </div>
+            <% }); %>
 
-    <%- include('partials/footer') %>
+        </div>
+      </section>
 
-    <div id="preloader"></div>
+      <%- include('partials/footer') %>
 
-    <!-- Vendor JS Files -->
-    <script>
-      // Auto-scroll the row every 2 seconds
-      const scrollableRow = document.getElementById("scrollableRow");
-      let scrollSpeed = 1; // Scroll speed in px per interval
-      let scrollInterval;
+        <div id="preloader"></div>
 
-      function autoScroll() {
-        scrollInterval = setInterval(function () {
-          scrollableRow.scrollLeft += scrollSpeed; // Scroll horizontally
-        }, 50); // Every 30 milliseconds
-      }
+        <!-- Vendor JS Files -->
+        <script>
+          // Auto-scroll the row every 2 seconds
+          const scrollableRow = document.getElementById("scrollableRow");
+          let scrollSpeed = 1; // Scroll speed in px per interval
+          let scrollInterval;
 
-      function stopAutoScroll() {
-        clearInterval(scrollInterval); // Stop auto-scrolling
-      }
+          function autoScroll() {
+            scrollInterval = setInterval(function () {
+              scrollableRow.scrollLeft += scrollSpeed; // Scroll horizontally
+            }, 50); // Every 30 milliseconds
+          }
 
-      // Implement drag-to-scroll functionality
-      // let isDragging = false;
-      // let startX, scrollLeft;
+          function stopAutoScroll() {
+            clearInterval(scrollInterval); // Stop auto-scrolling
+          }
 
-      // scrollableRow.addEventListener("mousedown", (e) => {
-      //   isDragging = true;
-      //   startX = e.pageX - scrollableRow.offsetLeft;
-      //   scrollLeft = scrollableRow.scrollLeft;
-      //   scrollableRow.style.cursor = "grabbing"; // Change cursor on drag start
-      //   stopAutoScroll(); // Stop auto-scrolling when dragging
-      // });
+          // Implement drag-to-scroll functionality
+          // let isDragging = false;
+          // let startX, scrollLeft;
 
-      // scrollableRow.addEventListener("mouseleave", () => {
-      //   isDragging = false;
-      //   scrollableRow.style.cursor = "grab";
-      // });
+          // scrollableRow.addEventListener("mousedown", (e) => {
+          //   isDragging = true;
+          //   startX = e.pageX - scrollableRow.offsetLeft;
+          //   scrollLeft = scrollableRow.scrollLeft;
+          //   scrollableRow.style.cursor = "grabbing"; // Change cursor on drag start
+          //   stopAutoScroll(); // Stop auto-scrolling when dragging
+          // });
 
-      // scrollableRow.addEventListener("mouseup", () => {
-      //   isDragging = false;
-      //   scrollableRow.style.cursor = "grab";
-      // });
+          // scrollableRow.addEventListener("mouseleave", () => {
+          //   isDragging = false;
+          //   scrollableRow.style.cursor = "grab";
+          // });
 
-      // scrollableRow.addEventListener("mousemove", (e) => {
-      //   if (!isDragging) return;
-      //   const x = e.pageX - scrollableRow.offsetLeft;
-      //   const walk = (x - startX) * 2; // Multiply for faster scrolling
-      //   scrollableRow.scrollLeft = scrollLeft - walk;
-      // });
+          // scrollableRow.addEventListener("mouseup", () => {
+          //   isDragging = false;
+          //   scrollableRow.style.cursor = "grab";
+          // });
 
-      // Start the auto-scrolling when the page loads
-      window.onload = autoScroll;
-    </script>
-    <script src="<%= link %>/uploads/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="<%= link %>/uploads/assets/vendor/aos/aos.js"></script>
-    <script src="<%= link %>/uploads/assets/vendor/glightbox/js/glightbox.min.js"></script>
-    <script src="<%= link %>/uploads/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-    <script src="<%= link %>/uploads/assets/vendor/swiper/swiper-bundle.min.js"></script>
-    <script src="<%= link %>/uploads/assets/vendor/purecounter/purecounter_vanilla.js"></script>
-    <script src="<%= link %>/uploads/assets/vendor/php-email-form/validate.js"></script>
+          // scrollableRow.addEventListener("mousemove", (e) => {
+          //   if (!isDragging) return;
+          //   const x = e.pageX - scrollableRow.offsetLeft;
+          //   const walk = (x - startX) * 2; // Multiply for faster scrolling
+          //   scrollableRow.scrollLeft = scrollLeft - walk;
+          // });
 
-    <!-- Template Main JS File -->
-    <script src="<%= link %>/uploads/assets/js/main.js"></script>
+          // Start the auto-scrolling when the page loads
+          window.onload = autoScroll;
+        </script>
+        <script src="<%= link %>/uploads/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="<%= link %>/uploads/assets/vendor/aos/aos.js"></script>
+        <script src="<%= link %>/uploads/assets/vendor/glightbox/js/glightbox.min.js"></script>
+        <script src="<%= link %>/uploads/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+        <script src="<%= link %>/uploads/assets/vendor/swiper/swiper-bundle.min.js"></script>
+        <script src="<%= link %>/uploads/assets/vendor/purecounter/purecounter_vanilla.js"></script>
+        <script src="<%= link %>/uploads/assets/vendor/php-email-form/validate.js"></script>
+
+        <!-- Template Main JS File -->
+        <script src="<%= link %>/uploads/assets/js/main.js"></script>
   </body>
+
 </html>

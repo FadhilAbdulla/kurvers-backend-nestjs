@@ -1,11 +1,12 @@
-import { Injectable } from '@nestjs/common';
+import { HttpException, Injectable } from '@nestjs/common';
 import { Prisma } from '@prisma/client';
 import { DatabaseService } from 'src/database/database.service';
 import { ConfigurationEdit, ContactEdit } from 'src/pages/entities/constant';
+import { Sitevariables, fillDefaults } from './entities/constants';
 
 @Injectable()
 export class ConfigurationService {
-  constructor(private readonly databaseService: DatabaseService) {}
+  constructor(private readonly databaseService: DatabaseService) { }
 
   async create(createConfigurationDto: Prisma.ConfigurationCreateInput) {
     await this.databaseService.logActivity('General Data', 'created');
@@ -41,21 +42,38 @@ export class ConfigurationService {
     });
   }
 
-  findOne(id: string) {
-    return this.databaseService.configuration.findFirst({ where: { label: id } });
+  async findOne(id: string) {
+    const res = await this.databaseService.configuration.findFirst({ where: { label: id } });
+    if (!res) {
+      throw new HttpException('Invalid Configuration ID', 400);
+    }
+    else {
+      res.value = JSON.parse(res.value);
+      return res;
+    }
   }
 
-  async update(id: number, updateConfigurationDto: Prisma.ConfigurationUpdateInput) {
+  async update(label: string, Data: any) {
     await this.databaseService.logActivity('General Data', 'updated');
+    if (!Sitevariables[label]) {
+      console.log(label);
 
-    return this.databaseService.configuration.update({
+      throw new HttpException('Invalid Configuration ID', 400);
+    }
+    const updateData = fillDefaults(Data || {}, Sitevariables[label])
+    const updateDataString = { value: JSON.stringify(updateData) }
+
+    return this.databaseService.configuration.upsert({
       where: {
-        id: id,
+        label: label,
       },
-      data: {
-        ...updateConfigurationDto,
+      update: updateDataString,
+      create: {
+        label: label,
+        ...updateDataString,
       },
     });
+
   }
 
   async remove(id: number) {
@@ -63,4 +81,5 @@ export class ConfigurationService {
 
     return this.databaseService.configuration.delete({ where: { id: id } });
   }
+
 }
