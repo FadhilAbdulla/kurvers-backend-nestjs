@@ -40,7 +40,7 @@
             <div class="col-md-8 px-4" data-aos="fade-left" data-aos-delay="200">
               <% const selectedEntries=products.slice(0, 2); %>
                 <% selectedEntries.forEach((items)=> { %>
-                  <% if (Array.isArray(items.points)) { %>
+                  <% if (Array.isArray(items.points) && items.points.length> 0) { %>
                     <!-- If items is a list -->
                     <div>
                       <h3 class="text-primary fw-bold mb-1 mt-2 underline-alt ls-1">
@@ -69,7 +69,7 @@
             <div class="col-md-8 px-4" data-aos="fade-left" data-aos-delay="200">
               <% const selectedEntries2=products.slice(2, 4); %>
                 <% selectedEntries2.forEach((items)=> { %>
-                  <% if (Array.isArray(items.points)) { %>
+                  <% if (Array.isArray(items.points) && items.points.length> 0) { %>
                     <!-- If items is a list -->
                     <div>
                       <h3 class="text-primary fw-bold mb-1 mt-2 underline-alt ls-1">

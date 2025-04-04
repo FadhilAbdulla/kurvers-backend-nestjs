@@ -1,4 +1,3 @@
-
 @font-face {
   font-family: 'chairdrobe';
   src: url('../NewSet/Font/CHAIRDROBE/chairdrobe-regular.otf') format('opentype');
@@ -2969,10 +2968,16 @@ h3:hover .underline {
 }
 
 .text-overlay .heading {
-  font-size: 4rem;
+  font-size: 4rem !important;
+}
+.text-overlay h1 {
+  font-size: 4rem !important;
+}
+.text-overlay p {
+  font-size: 1.5rem !important;
 }
 .text-overlay .sub-heading {
-  font-size: 1.5rem;
+  font-size: 1.5rem !important;
 }
 
 .about-us-content-box {
@@ -3190,4 +3195,14 @@ h3:hover .underline {
 
 .pointer {
   cursor: pointer;
+}
+
+.ql-size-large {
+  font-size: 1.8rem !important; /* Adjust the size as needed */
+  letter-spacing: 2px;
+  font-family: var(--font-primary) !important;
+}
+
+.turnkey-content-header h3 {
+  font-family: var(--font-secondary) !important;
 }
