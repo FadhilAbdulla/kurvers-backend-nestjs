@@ -144,6 +144,20 @@ export const Sitevariables = {
   career: {
     subHeading: ""
   },
+  contact: {
+    country: [
+      {
+        key: "",
+        heading: "",
+        email: "",
+        address1: "",
+        address2: "",
+        phone: "",
+        countryIdentifier: "",
+        mapElement: "",
+      },
+    ],
+  },
   footer: {
     cmpny: {
       Name: "",

@@ -2,7 +2,7 @@ import { HttpException, Injectable } from '@nestjs/common';
 // import { CreatePageDto } from './dto/create-page.dto';
 // import { UpdatePageDto } from './dto/update-page.dto';
 import { DatabaseService } from 'src/database/database.service';
-import { Root, FooterItems, ContactEdit } from './entities/constant';
+import { Root, ContactData } from './entities/constant';
 
 @Injectable()
 export class PagesService {
@@ -54,47 +54,51 @@ export class PagesService {
 
   async contact() {
     const footer = await this.databaseService.configuration.findFirst({ where: { label: 'footer' } });
+    const res = await this.databaseService.configuration.findFirst({ where: { label: 'contact' } });
+    const transformed = []
 
-    const res = await this.databaseService.configuration.findMany();
-    const ContactDetails = this.ConvertData(ContactEdit, res);
-    const transformed = Object.fromEntries(
-      Object.entries(ContactDetails).map(([key, value]) => {
-        const parsed = JSON.parse(String(value)); // Parse the JSON string
-        const htmlString = `
-          <p class='fw-bold'>${parsed.heading}</p>
-          <p>${parsed.address1}</p>
-          ${parsed.address2 ? `<p>${parsed.address2}</p>` : ''}
-          
-          ${parsed.email ? `<a href='mailto:${parsed.email}' class='pointer email'>${parsed.email}</a>` : ''}
-          ${parsed.phone ? `<a href='tel:${parsed.phone}' class='pointer email'>${parsed.phone}</a>` : ''}
-        `;
-        return [key, htmlString.trim()]; // Return the transformed key-value pair
-      })
-    );
-    console.log(transformed, ContactDetails);
+    JSON.parse(res.value)?.country.map((it) => {
+      const countOfMapElement = transformed.filter(sub => sub.mapElement.includes(it.mapElement)).length;
+      let trnsfrm: any = {
+        heading: it.heading,
+        countryIdentifier: it.countryIdentifier,
+        mapElement: countOfMapElement > 0 ? `${it.mapElement}${countOfMapElement}` : it.mapElement,
+      }
+      const htmlString = `
+      <p class='fw-bold'>${it.heading}</p>
+      <p>${it.address1}</p>
+      ${it.address2 ? `<p>${it.address2}</p>` : ''}
+      
+      ${it.email ? `<a href='mailto:${it.email}' class='pointer email'>${it.email}</a>` : ''}
+      ${it.phone ? `<a href='tel:${it.phone}' class='pointer email'>${it.phone}</a>` : ''}
+    `;
+      trnsfrm = { ...trnsfrm, content: htmlString }
+      transformed.push({ ...trnsfrm, ...ContactData[it.mapElement] })
+    })
+
 
     return {
       ...Root,
-      ...transformed,
+      rectData: transformed,
       footer: { ...JSON.parse(footer.value) },
     };
   }
 
   async terms() {
-    const res = await this.databaseService.configuration.findMany();
+    const footer = await this.databaseService.configuration.findFirst({ where: { label: 'footer' } });
 
     return {
       ...Root,
-      footer: { ...this.ConvertData(FooterItems, res) },
+      footer: { ...JSON.parse(footer.value) },
     };
   }
 
   async privacy() {
-    const res = await this.databaseService.configuration.findMany();
+    const footer = await this.databaseService.configuration.findFirst({ where: { label: 'footer' } });
 
     return {
       ...Root,
-      footer: { ...this.ConvertData(FooterItems, res) },
+      footer: { ...JSON.parse(footer.value) },
     };
   }
 
