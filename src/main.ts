@@ -30,6 +30,7 @@ async function bootstrap() {
       'contact',
       'terms',
       'privacy',
+      'quality',
       'api',
     ],
   });

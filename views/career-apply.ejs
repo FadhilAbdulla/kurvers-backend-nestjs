@@ -1,190 +1,134 @@
 <!DOCTYPE html>
 <html lang="en">
-  
-    <%- include('partials/head.ejs') %>
-    <body>
-      <%- include('partials/header.ejs', { header: "career" }) %>
-    <section style="padding-bottom: 0%">
-      <div
-        class="row text-overlay justify-content-center"
-        style="
+
+<%- include('partials/head.ejs') %>
+
+  <body>
+    <%- include('partials/header.ejs', { header: "career" }) %>
+      <section style="padding-bottom: 0%">
+        <div class="row text-overlay justify-content-center" style="
           background-image: url('<%= link %>/uploads/assets/NewSet/Turnkey2.png');
           background-size: cover;
-        "
-        data-aos="fade-in"
-        data-aos-delay="200"
-      >
-        <div class="col-md-8 py-5" data-aos="fade-left" data-aos-delay="300">
-          <a href="<%= link %>/career">
-            <i class="fas fa-arrow-left px-2"></i> Back to job listing
-          </a>
-          <h5
-            class="heading text-center"
-            style="color: white !important"
-            data-aos="fade-up"
-            data-aos-delay="300"
-          >
-            Join Our Team
-          </h5>
+        " data-aos="fade-in" data-aos-delay="200">
+          <div class="col-md-8 py-5" data-aos="fade-left" data-aos-delay="300">
+            <a href="<%= link %>/career">
+              <i class="fas fa-arrow-left px-2"></i> Back to job listing
+            </a>
+            <h5 class="heading text-center" style="color: white !important" data-aos="fade-up" data-aos-delay="300">
+              Join Our Team
+            </h5>
+          </div>
         </div>
-      </div>
-    </section>
-    <section class="job-tiles" style="padding-top: 40px">
-      <div class="container">
-        <div
-          class="row justify-content-center"
-          data-aos="fade-in"
-          data-aos-delay="600"
-        >
-          <div
-            class="col-md-9 text-primary"
-            data-aos="fade-left"
-            data-aos-delay="600"
-          >
-            <p class="text-center my-4">
-              Become part of our dynamic team, where your expertise and passion
-              drive innovation, growth, and meaningful impact. Elevate your
-              career with us.
-            </p>
-            <div class="card-body pt-4">
-              <form id="jobApplicationForm">
-                <div class="row g-4 mb-4">
+      </section>
+      <section class="job-tiles" style="padding-top: 40px">
+        <div class="container">
+          <div class="row justify-content-center" data-aos="fade-in" data-aos-delay="600">
+            <div class="col-md-9 text-primary" data-aos="fade-left" data-aos-delay="600">
+              <p class="text-center my-4">
+                Become part of our dynamic team, where your expertise and passion
+                drive innovation, growth, and meaningful impact. Elevate your
+                career with us.
+              </p>
+              <div class="card-body pt-4">
+                <form id="jobApplicationForm">
+                  <div class="row g-4 mb-4">
 
-                  <div class="col-md-6 form-group">
-                    <label for="name">Full Name</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="name"
-                      placeholder="Enter your name"
-                      required
-                    />
-                  </div>
-                  <div class="col-md-6 form-group">
-                    <label for="email">Email Address</label>
-                    <input
-                      type="email"
-                      class="form-control"
-                      id="email"
-                      placeholder="Enter your email"
-                      required
-                    />
-                  </div>
-                  <div class="col-md-6 form-group">
-                    <label for="phone"
-                      >Phone Number
-                      <small class="fw-6">with country code </small></label
-                    >
-                    <div class="input-group">
-                      <span class="input-group-text">+</span>
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="countryCode"
-                        placeholder="971"
-                        style="max-width: 80px"
-                        required
-                      />
-                      <input
-                        type="tel"
-                        class="form-control"
-                        id="phone"
-                        placeholder="56XXXXXXXXXX"
-                        required
-                      />
+                    <div class="col-md-6 form-group">
+                      <label for="name">Full Name</label>
+                      <input type="text" class="form-control" id="name" placeholder="Enter your name" required />
+                    </div>
+                    <div class="col-md-6 form-group">
+                      <label for="email">Email Address</label>
+                      <input type="email" class="form-control" id="email" placeholder="Enter your email" required />
+                    </div>
+                    <div class="col-md-6 form-group">
+                      <label for="phone">Phone Number
+                        <small class="fw-6">with country code </small></label>
+                      <div class="input-group">
+                        <span class="input-group-text">+</span>
+                        <input type="text" class="form-control" id="countryCode" placeholder="971"
+                          style="max-width: 80px" required />
+                        <input type="tel" class="form-control" id="phone" placeholder="56XXXXXXXXXX" required />
+                      </div>
+                    </div>
+                    <div class="col-md-6 form-group">
+                      <label for="coverLetter">Upload Cover Letter</label>
+                      <div class="input-group">
+                        <input type="file" class="form-control" id="coverLetter" name="coverLetter"
+                          accept=".pdf, .doc, .docx, .txt" required />
+                      </div>
+                    </div>
+                    <div class="col-md-6 form-group mb-3">
+                      <label for="resume">Upload Resume</label>
+                      <div class="input-group">
+                        <input type="file" class="form-control" id="resume" name="resume"
+                          accept=".pdf, .doc, .docx, .txt" required />
+                      </div>
                     </div>
                   </div>
-                  <div class="col-md-6 form-group">
-                    <label for="coverLetter">Upload Cover Letter</label>
-                    <div class="input-group">
-                      <input
-                        type="file"
-                        class="form-control"
-                        id="coverLetter"
-                        name="coverLetter"
-                        accept=".pdf, .doc, .docx, .txt"
-                        required
-                      />
-                    </div>
+                  <div class="d-flex justify-content-center">
+                    <button type="submit"
+                      class="btn btn-secondary font-style-primary fs-6 fw-bold bg-secondary border rounded px-4 py-3 mt-4">
+                      SUBMIT APPLICATION
+                    </button>
                   </div>
-                  <div class="col-md-6 form-group mb-3">
-                    <label for="resume">Upload Resume</label>
-                    <div class="input-group">
-                      <input
-                        type="file"
-                        class="form-control"
-                        id="resume"
-                        name="resume"
-                        accept=".pdf, .doc, .docx, .txt"
-                        required
-                      />
-                    </div>
-                  </div>
-                </div>
-                <div class="d-flex justify-content-center">
-                  <button
-                    type="submit"
-                    class="btn btn-secondary font-style-primary fs-6 fw-bold bg-secondary border rounded px-4 py-3 mt-4"
-                  >
-                    SUBMIT APPLICATION
-                  </button>
-                </div>
-              </form>
+                </form>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <%- include('partials/footer') %>
+      <%- include('partials/footer') %>
 
-    <div id="preloader"></div>
+        <!-- <div id="preloader"></div> -->
 
-    <!-- Vendor JS Files -->
-    <script src="<%= link %>/uploads/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="<%= link %>/uploads/assets/vendor/aos/aos.js"></script>
-    <script src="<%= link %>/uploads/assets/vendor/glightbox/js/glightbox.min.js"></script>
-    <script src="<%= link %>/uploads/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-    <script src="<%= link %>/uploads/assets/vendor/swiper/swiper-bundle.min.js"></script>
-    <script src="<%= link %>/uploads/assets/vendor/purecounter/purecounter_vanilla.js"></script>
-    <script src="<%= link %>/uploads/assets/vendor/php-email-form/validate.js"></script>
+        <!-- Vendor JS Files -->
+        <script src="<%= link %>/uploads/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="<%= link %>/uploads/assets/vendor/aos/aos.js"></script>
+        <script src="<%= link %>/uploads/assets/vendor/glightbox/js/glightbox.min.js"></script>
+        <script src="<%= link %>/uploads/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+        <script src="<%= link %>/uploads/assets/vendor/swiper/swiper-bundle.min.js"></script>
+        <script src="<%= link %>/uploads/assets/vendor/purecounter/purecounter_vanilla.js"></script>
+        <script src="<%= link %>/uploads/assets/vendor/php-email-form/validate.js"></script>
 
-    <!-- Template Main JS File -->
-    <script src="<%= link %>/uploads/assets/js/main.js"></script>
+        <!-- Template Main JS File -->
+        <script src="<%= link %>/uploads/assets/js/main.js"></script>
 
 
-    <script>
-      document
-        .getElementById("jobApplicationForm")
-        .addEventListener("submit", function (event) {
-          event.preventDefault(); // Prevent default form submission
+        <script>
+          document
+            .getElementById("jobApplicationForm")
+            .addEventListener("submit", function (event) {
+              event.preventDefault(); // Prevent default form submission
 
-          const formData = new FormData();
-          formData.append("name", document.getElementById("name").value);
-          formData.append("email", document.getElementById("email").value);
-          // formData.append("countryCode", document.getElementById("countryCode").value);
-          formData.append("phone", document.getElementById("phone").value);
-          // formData.append("resume", document.getElementById("resume").files[0]);
-          // formData.append("coverLetter", document.getElementById("coverLetter").files[0]);
-          // formData.append("coverLetter", "coverletter");
-          formData.append("files", document.getElementById("resume").files[0]);
-          formData.append("files", document.getElementById("coverLetter").files[0]);
-          formData.append("job", "<%= jobId %>");
+              const formData = new FormData();
+              formData.append("name", document.getElementById("name").value);
+              formData.append("email", document.getElementById("email").value);
+              // formData.append("countryCode", document.getElementById("countryCode").value);
+              formData.append("phone", document.getElementById("phone").value);
+              // formData.append("resume", document.getElementById("resume").files[0]);
+              // formData.append("coverLetter", document.getElementById("coverLetter").files[0]);
+              // formData.append("coverLetter", "coverletter");
+              formData.append("files", document.getElementById("resume").files[0]);
+              formData.append("files", document.getElementById("coverLetter").files[0]);
+              formData.append("job", "<%= jobId %>");
 
-          // API Call
-          fetch("<%= link %>/api/careerapply", {
-            method: "POST",
-            body:formData
-          })
-            .then((response) => response.json())
-            .then((data) => {
-              alert("Application submitted successfully!");
-              window.location.href = "<%= link %>/career"
-            })
-            .catch((error) => {
-              alert("There was an error submitting your application.");
+              // API Call
+              fetch("<%= link %>/api/careerapply", {
+                method: "POST",
+                body: formData
+              })
+                .then((response) => response.json())
+                .then((data) => {
+                  alert("Application submitted successfully!");
+                  window.location.href = "<%= link %>/career"
+                })
+                .catch((error) => {
+                  alert("There was an error submitting your application.");
+                });
             });
-        });
-    </script>
+        </script>
   </body>
+
 </html>

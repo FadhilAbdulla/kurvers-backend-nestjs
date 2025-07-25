@@ -7,7 +7,6 @@
       <div class="position-relative h-100">
         <div class="slides-1 portfolio-details-slider swiper">
           <div class="swiper-wrapper align-items-center">
-            <!-- Slide 0 -->
             <% banner.forEach(slide=> { %>
               <div class="swiper-slide">
                 <div class="slide-content">
@@ -195,7 +194,6 @@
             <div class="col-md-5 p-0 p-md-4" data-aos="fade-right" data-aos-delay="200">
               <div class="slides-1 swiper">
                 <div class="swiper-wrapper">
-                  <!-- Slide 1 -->
                   <% goingGreenImages.forEach(img=> { %>
                     <div class="swiper-slide d-flex justify-content-center">
                       <img src="<%= link +'/'+ img.image %>" alt="Go Green" class="img-fluid rounded shadow" />
@@ -267,7 +265,7 @@
                 <% productRange.points.points.forEach(dat=> { %>
                   <li>
                     <!-- <i class="bi bi-check-circle-fill"></i> -->
-                    <img src="<%= link %>/uploads/assets/NewSet/circle.png" width="25px" class="me-4" />
+                    <img src="<%= link %>/<%= element.bulletinLogo.image %>" width="25px" class="me-4" />
                     <span>
                       <%= dat %>
                     </span>
@@ -295,7 +293,7 @@
       </section>
       <%- include('partials/footer') %>
 
-        <div id="preloader"></div>
+        <!-- <div id="preloader"></div> -->
 
         <script src="<%= link %>/uploads/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
         <script src="<%= link %>/uploads/assets/vendor/aos/aos.js"></script>

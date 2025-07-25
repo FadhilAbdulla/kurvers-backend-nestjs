@@ -32,6 +32,15 @@ export class PagesController {
   valves() {
     return this.pagesService.GetPrimaryData('valves')
   }
+
+  @Get('quality')
+  @Render('quality')
+  async quality() {
+    console.log(await this.pagesService.GetPrimaryData("quality"));
+
+    return this.pagesService.GetPrimaryData("quality");
+  }
+
   @Get('career')
   @Render('career')
   career() {
@@ -56,11 +65,12 @@ export class PagesController {
   @Get('terms')
   @Render('terms')
   terms() {
-    return this.pagesService.terms();
+    return this.pagesService.GetMinimalPageData();
   }
   @Get('privacy')
   @Render('privacy')
   privacy() {
-    return this.pagesService.privacy();
+    return this.pagesService.GetMinimalPageData();
   }
+
 }

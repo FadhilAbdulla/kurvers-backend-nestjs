@@ -159,9 +159,14 @@ export const Sitevariables = {
     ],
   },
   footer: {
+    accreditationLogo: [{
+      key: "",
+      image: "",
+    }],
     cmpny: {
       Name: "",
       City: "",
+      Description: "",
       Street: "",
       Country: "",
       Tel: "",
@@ -169,6 +174,47 @@ export const Sitevariables = {
       Mail: "",
       Linkedin: "",
       Copyright: "",
+    },
+  },
+  element: {
+    mainLogo: {
+      key: "",
+      image: "",
+    },
+    valveLogo: {
+      key: "",
+      image: "",
+    },
+    bulletinLogo: {
+      key: "",
+      image: "",
+    },
+    navbar: {
+      home: "",
+      aboutUs: "",
+      turnkey: "",
+      productRange: "",
+      kurversValves: "",
+      quality: "",
+      careers: "",
+      contactUs: "",
+    },
+  },
+  quality: {
+    mainHeading: "",
+    section1: {
+      key: "",
+      image: "",
+      heading: "",
+      subHeading: "",
+    },
+    section2: {
+      heading: "",
+      subHeading: "",
+    },
+    section3: {
+      heading: "",
+      subHeading: "",
     },
   },
 };

@@ -49,7 +49,7 @@
                       <ul class="custom-list mt-3 fs-6">
                         <% items.points.forEach((item)=> { %>
                           <li>
-                            <img src="<%= link %>/uploads/assets/NewSet/circle.png" width="25px" class="me-4" />
+                            <img src="<%= link %>/<%= element.bulletinLogo.image %>" width="25px" class="me-4" />
                             <%= item %>
                           </li>
                           <% }); %>
@@ -78,7 +78,7 @@
                       <ul class="custom-list mt-3 fs-6">
                         <% items.points.forEach((item)=> { %>
                           <li>
-                            <img src="<%= link %>/uploads/assets/NewSet/circle.png" width="25px" class="me-4" />
+                            <img src="<%= link %>/<%= element.bulletinLogo.image %>" width="25px" class="me-4" />
                             <%= item %>
                           </li>
                           <% }); %>
@@ -109,7 +109,7 @@
 
       <%- include('partials/footer') %>
 
-        <div id="preloader"></div>
+        <!-- <div id="preloader"></div> -->
 
         <!-- Vendor JS Files -->
         <script src="<%= link %>/uploads/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

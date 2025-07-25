@@ -36,28 +36,22 @@ export class PagesService {
   }
 
   async career_focus(id: number) {
-    const footer = await this.databaseService.configuration.findFirst({ where: { label: 'footer' } });
+    const main = await this.GetMinimalPageData()
     const career = await this.databaseService.job.findFirst({ where: { id: id } });
-
-    return {
-      ...Root, ...career, footer: { ...JSON.parse(footer.value) },
-    };
+    return { ...main, ...career };
   }
 
   async career_apply(id: number) {
-    const footer = await this.databaseService.configuration.findFirst({ where: { label: 'footer' } });
-
-    return {
-      ...Root, jobId: id, footer: { ...JSON.parse(footer.value) },
-    };
+    const main = await this.GetMinimalPageData()
+    return { ...main, jobId: id };
   }
 
   async contact() {
-    const footer = await this.databaseService.configuration.findFirst({ where: { label: 'footer' } });
+    const main = await this.GetMinimalPageData()
     const res = await this.databaseService.configuration.findFirst({ where: { label: 'contact' } });
     const transformed = []
 
-    JSON.parse(res.value)?.country.map((it) => {
+    this.safeParse(res.value)?.country.map((it) => {
       const countOfMapElement = transformed.filter(sub => sub.mapElement.includes(it.mapElement)).length;
       let trnsfrm: any = {
         heading: it.heading,
@@ -76,42 +70,50 @@ export class PagesService {
       transformed.push({ ...trnsfrm, ...ContactData[it.mapElement] })
     })
 
-
-    return {
-      ...Root,
-      rectData: transformed,
-      footer: { ...JSON.parse(footer.value) },
-    };
+    return { ...main, rectData: transformed };
   }
 
-  async terms() {
-    const footer = await this.databaseService.configuration.findFirst({ where: { label: 'footer' } });
 
-    return {
-      ...Root,
-      footer: { ...JSON.parse(footer.value) },
-    };
-  }
-
-  async privacy() {
-    const footer = await this.databaseService.configuration.findFirst({ where: { label: 'footer' } });
-
-    return {
-      ...Root,
-      footer: { ...JSON.parse(footer.value) },
-    };
-  }
 
   async GetPrimaryData(id: string) {
-    const res = await this.databaseService.configuration.findFirst({ where: { label: id } });
-    const footer = await this.databaseService.configuration.findFirst({ where: { label: 'footer' } });
-    if (!res) {
-      return null
-    }
-    else {
+    const [res, datArray] = await Promise.all([
+      this.databaseService.configuration.findFirst({ where: { label: id } }),
+      this.databaseService.configuration.findMany({
+        where: { label: { in: ['footer', 'element'] } },
+      }),
+    ]);
 
-      const resp = JSON.parse(res.value)
-      return { ...Root, ...resp, footer: { ...JSON.parse(footer.value) } };
-    }
+    if (!res) return null;
+
+    const dat = Object.fromEntries(datArray.map(item => [item.label, item]));
+    return {
+      ...Root,
+      ...this.safeParse(res.value),
+      footer: this.safeParse(dat.footer?.value || '{}'),
+      element: this.safeParse(dat.element?.value || '{}'),
+    };
   }
+
+  async GetMinimalPageData() {
+    const datArray = await this.databaseService.configuration.findMany({
+      where: { label: { in: ['footer', 'element'] } }
+    })
+
+    const dat = Object.fromEntries(datArray.map(item => [item.label, item]));
+    return {
+      ...Root,
+      footer: this.safeParse(dat.footer?.value || '{}'),
+      element: this.safeParse(dat.element?.value || '{}'),
+    };
+
+  }
+
+
+  safeParse = (str: string) => {
+    try {
+      return JSON.parse(str);
+    } catch {
+      return {};
+    }
+  };
 }

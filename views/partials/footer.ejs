@@ -4,11 +4,14 @@
       <div class="col-md-6">
         <img src="<%= link %>/uploads/assets/img/logo-name.png" alt="Kürvers Piping" class="img-fluid" width="18%" />
         <p class="mt-2 pe-4 me-4 text-sm-85">
-          Kürvers is a global leader in the procurement of materials for complex pipeline projects in petrochemical and
-          energy sectors. Our extensive
-          experience, industry expertise, and long-standing partnerships ensure unmatched reliability and delivery.
+          <%= footer.cmpny.Description %>
         </p>
-        <img src="<%= link %>/uploads/assets/NewSet/LRQA.png" alt="Kürvers Piping" class="img-fluid" width="10%" />
+        <div>
+          <% footer.accreditationLogo.forEach((item)=> { %>
+            <img src="<%= link %>/<%= item.image %>" alt="Kürvers Piping" class="img-fluid me-2" width="13%" />
+            <% }) %>
+        </div>
+        <!-- accreditationLogo -->
       </div>
       <div class="col-md-3">
         <ul class="list-unstyled text-sm-95">
@@ -51,6 +54,7 @@
           <li class="fw-light"><span class="fw-bold">Mail:</span><a href="mailto:<%= footer.cmpny.Mail %>">
               <%= footer.cmpny.Mail %>
             </a></li>
+
         </ul>
         <address class="fw-semibold text-sm-85">
           <%= footer.cmpny.Name %><br />
@@ -89,4 +93,5 @@
   <!--  -->
   <a href="#" class="scroll-top d-flex align-items-center justify-content-center bg-primary"><i
       class="bi bi-arrow-up-short"></i></a>
+
 </footer>

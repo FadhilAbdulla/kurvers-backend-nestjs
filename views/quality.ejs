@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('partials/head.ejs') %>
+
+  <body>
+    <%- include('partials/header.ejs', { header: "quality" }) %>
+
+      <section style="padding-bottom: 0%">
+        <div class="text-center py-5 text-overlay" style="
+          background-image: url('<%= link %>/uploads/assets/NewSet/Turnkey2.png');
+          background-size: cover;
+        " data-aos="fade-in" data-aos-delay="200">
+          <h1 style="color: white !important" data-aos="fade-down" data-aos-delay="400">
+            <%= mainHeading %>
+          </h1>
+        </div>
+      </section>
+      <section class="about-us">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6" data-aos="fade-right" data-aos-delay="200">
+              <h3 class="text-primary fw-bold mb-3 underline-alt fs-1 ls-1">
+                <%- section1.heading %>
+              </h3>
+              <div class=" pb-4">
+                <%- section1.subHeading %>
+              </div>
+
+            </div>
+            <div class="col-md-1 d-none d-md-block"></div>
+            <div class="col-md-5  align-items-start d-flex" data-aos="fade-left" data-aos-delay="200">
+              <img src="<%= link %>/uploads/1743749970621-3640cc57-f23e-4f5c-92b2-ff168861ec1a.png" alt="About Us Image"
+                class="img-fluid rounded" />
+            </div>
+            <div class="col-md-12 mt-4">
+              <h3 class="text-primary fw-bold mb-3 underline-alt fs-1 ls-1">
+                <%- section2.heading %>
+              </h3>
+              <div class=" pb-4">
+                <%- section2.subHeading %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <div class="bg-blue-light">
+        <div class="container pt-4 pb-4">
+          <div class="row justify-content-between align-items-center">
+            <h3 class="col-md-4 text-primary fw-bold fs-1 ls-1">
+              <%- section3.heading %>
+            </h3>
+            <div class="col-md-7">
+              <h4 class="underline-alt mb-3">Approved and registered - worldwide.</h4>
+              <%- section3.subHeading %>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+      <%- include('partials/footer') %>
+
+        <!-- <div id="preloader"></div> -->
+
+        <!-- Vendor JS Files -->
+        <script src="<%= link %>/uploads/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="<%= link %>/uploads/assets/vendor/aos/aos.js"></script>
+        <script src="<%= link %>/uploads/assets/vendor/glightbox/js/glightbox.min.js"></script>
+        <script src="<%= link %>/uploads/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+        <script src="<%= link %>/uploads/assets/vendor/swiper/swiper-bundle.min.js"></script>
+        <script src="<%= link %>/uploads/assets/vendor/purecounter/purecounter_vanilla.js"></script>
+        <script src="<%= link %>/uploads/assets/vendor/php-email-form/validate.js"></script>
+
+        <!-- Template Main JS File -->
+        <script src="<%= link %>/uploads/assets/js/main.js"></script>
+  </body>
+
+</html>
