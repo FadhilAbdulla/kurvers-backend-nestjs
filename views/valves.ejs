@@ -144,7 +144,7 @@
               <ul class="custom-list">
                 <% items.points.forEach((item)=> { %>
                   <li class="align-items-center">
-                    <img src="<%= link %>/uploads/assets/NewSet/circle-valve.png" width="25px" class="me-4" />
+                    <img src="<%= link %>/<%= element.bulletinLogo.image %>" width="25px" class="me-4" />
                     <%= item %>
                   </li>
                   <% }); %>
@@ -166,15 +166,15 @@
           let scrollSpeed = 1; // Scroll speed in px per interval
           let scrollInterval;
 
-          function autoScroll() {
-            scrollInterval = setInterval(function () {
-              scrollableRow.scrollLeft += scrollSpeed; // Scroll horizontally
-            }, 50); // Every 30 milliseconds
-          }
+          //function autoScroll() {
+          //  scrollInterval = setInterval(function () {
+          //    scrollableRow.scrollLeft += scrollSpeed; // Scroll horizontally
+          //  }, 50); // Every 30 milliseconds
+          //}
 
-          function stopAutoScroll() {
-            clearInterval(scrollInterval); // Stop auto-scrolling
-          }
+          //function stopAutoScroll() {
+          //  clearInterval(scrollInterval); // Stop auto-scrolling
+          //}
 
           // Implement drag-to-scroll functionality
           // let isDragging = false;
@@ -206,7 +206,7 @@
           // });
 
           // Start the auto-scrolling when the page loads
-          window.onload = autoScroll;
+          //window.onload = autoScroll;
         </script>
         <script src="<%= link %>/uploads/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
         <script src="<%= link %>/uploads/assets/vendor/aos/aos.js"></script>
