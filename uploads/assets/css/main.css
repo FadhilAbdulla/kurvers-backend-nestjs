@@ -3102,11 +3102,12 @@ h3:hover .underline {
   font-weight: 700;
   font-size: 5.5em;
   letter-spacing: 5px;
+  line-height: 1;
 }
 
 @media (max-width: 768px) {
   .overlay-text h1 {
-    font-size: 4rem;
+    font-size: 3.5rem;
   }
 }
 
