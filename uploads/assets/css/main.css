@@ -45,7 +45,11 @@
 body {
   font-family: var(--font-secondary);
   color: var(--color-primary);
-  overflow-x: hidden;
+  overflow-x: hidden !important;
+}
+
+.container {
+  overflow-x: hidden !important;
 }
 
 a {
@@ -3098,6 +3102,12 @@ h3:hover .underline {
   font-weight: 700;
   font-size: 5.5em;
   letter-spacing: 5px;
+}
+
+@media (max-width: 768px) {
+  .overlay-text h1 {
+    font-size: 4rem;
+  }
 }
 
 .overlay-text .highlight {

@@ -159,55 +159,6 @@
 
         <!-- <div id="preloader"></div> -->
 
-        <!-- Vendor JS Files -->
-        <script>
-          // Auto-scroll the row every 2 seconds
-          const scrollableRow = document.getElementById("scrollableRow");
-          let scrollSpeed = 1; // Scroll speed in px per interval
-          let scrollInterval;
-
-          //function autoScroll() {
-          //  scrollInterval = setInterval(function () {
-          //    scrollableRow.scrollLeft += scrollSpeed; // Scroll horizontally
-          //  }, 50); // Every 30 milliseconds
-          //}
-
-          //function stopAutoScroll() {
-          //  clearInterval(scrollInterval); // Stop auto-scrolling
-          //}
-
-          // Implement drag-to-scroll functionality
-          // let isDragging = false;
-          // let startX, scrollLeft;
-
-          // scrollableRow.addEventListener("mousedown", (e) => {
-          //   isDragging = true;
-          //   startX = e.pageX - scrollableRow.offsetLeft;
-          //   scrollLeft = scrollableRow.scrollLeft;
-          //   scrollableRow.style.cursor = "grabbing"; // Change cursor on drag start
-          //   stopAutoScroll(); // Stop auto-scrolling when dragging
-          // });
-
-          // scrollableRow.addEventListener("mouseleave", () => {
-          //   isDragging = false;
-          //   scrollableRow.style.cursor = "grab";
-          // });
-
-          // scrollableRow.addEventListener("mouseup", () => {
-          //   isDragging = false;
-          //   scrollableRow.style.cursor = "grab";
-          // });
-
-          // scrollableRow.addEventListener("mousemove", (e) => {
-          //   if (!isDragging) return;
-          //   const x = e.pageX - scrollableRow.offsetLeft;
-          //   const walk = (x - startX) * 2; // Multiply for faster scrolling
-          //   scrollableRow.scrollLeft = scrollLeft - walk;
-          // });
-
-          // Start the auto-scrolling when the page loads
-          //window.onload = autoScroll;
-        </script>
         <script src="<%= link %>/uploads/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
         <script src="<%= link %>/uploads/assets/vendor/aos/aos.js"></script>
         <script src="<%= link %>/uploads/assets/vendor/glightbox/js/glightbox.min.js"></script>
